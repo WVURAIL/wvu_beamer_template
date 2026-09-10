@@ -1,0 +1,45 @@
+% Sets the most fundemental WVU theme settings.
+
+% wvu brand palette: web-optimized hex values (as of Oct 10, 2025)
+% source: https://scm.wvu.edu/brand/visual-identity/
+
+% Provides a wvu theme for beamer
+\ProvidesPackage{beamercolorthemewvu}
+
+% This command ensures the code is only processed when beamer is loaded
+\mode<presentation>
+
+
+% primary palette
+\definecolor{wvu-blue}{RGB}{0,40,85}
+\definecolor{wvu-gold}{RGB}{238,170,0}
+
+% setting the primary colors
+\colorlet{Amurmaple@structure}{wvu-blue}
+\colorlet{Amurmaple@rule}{wvu-gold}
+
+% logo
+\logo{\;\includegraphics[width=1.8cm]{styles/wv_logo.png}}
+
+% WVU's secondary palette is split into two catagories, "accent" and "neutral"
+% Just establish them here, they are selected later
+
+% accent palette
+\definecolor{starcityblue}{RGB}{157,218,230}
+\definecolor{safetyblue}{RGB}{00,98,163}
+\definecolor{canary}{RGB}{247,221,99}
+\definecolor{sunset}{RGB}{245,134,114}
+\definecolor{woodburn}{RGB}{141,70,56}
+\definecolor{hemlock}{RGB}{106,114,79}
+\definecolor{wildflour}{RGB}{242,230,194}
+\definecolor{buckskin}{RGB}{179,161,105}
+\definecolor{oldgold}{RGB}{127,99,16}
+
+% neutral palette
+\definecolor{rattlergray}{RGB}{85,71,65}
+\definecolor{notquitewhite}{RGB}{247,247,247}
+\definecolor{coopersgray}{RGB}{190,183,179}
+\definecolor{senecagray}{RGB}{152,142,139}
+\definecolor{coal}{RGB}{28,43,57}
+
+\mode<all>

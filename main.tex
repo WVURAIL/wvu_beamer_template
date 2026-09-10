@@ -1,0 +1,205 @@
+%
+% Author: Dylan Gormley | dylan.gormley@mail.wvu.edu
+% This is beamer's amurmaple theme configured with WVU colors and logos.
+%
+% 1) Must be compiled with with LuaTex
+% 2) Must be set to aspectratio=169
+%
+\documentclass[aspectratio=169,10pt]{beamer}
+
+%
+% Adjust theme options, choose secondary colors and set up title page in styles/amurmaplewvu.sty
+%
+\usepackage{amurmaplewvu}
+
+%
+% The example below is taken from the theme author's repository, with a few changes
+% https://gitlab.gutenberg-asso.fr/mchupin/amurmaple/-/blob/main/test/beamer-amurmaple-black.tex
+%
+%\setbeameroption{show notes on second screen }
+\usepackage{pgfpages}
+\usepackage{lipsum}
+
+\pdfstringdefDisableCommands{%
+  \DeclareRobustCommand{\translate}[1]{#1}%
+}
+
+
+\begin{document}
+\maketitle
+
+\sepframe[title={Table of contents}]
+
+\frame{\tableofcontents}
+
+\section{The first section}
+
+\subsection{See the documentation of the beamer class for details}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ----------- FRAME ------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[<+->]{Lorem ipsum}{Sed commodo posuere pede}
+    \begin{block}{Block title}
+    Cras viverra metus rhoncus sem.
+    \end{block}
+
+    \begin{itemize}
+    	\item Lorem ipsum dolor sit amet
+    	\item Consectetuer adipiscing elit
+    	\item Ut purus elit, vestibulum ut
+    \end{itemize}
+
+\begin{quotation}[Donald E. Knuth, \emph{The \TeX book}]
+Gentle reader: This is a handbook about \TeX, a new typesetting system G intended for the creation of beautiful books—and especially for books that contain a lot of mathematics.
+\end{quotation}
+
+\begin{quotation}
+  Gentle reader: This is a handbook about \TeX, a new typesetting system G intended for the creation of beautiful books—and especially for books that contain a lot of mathematics.
+  \end{quotation}
+  
+\end{frame}
+
+\section{Second section}
+
+\sepframe
+
+\begin{frame}{Test}
+  \framesubtitle{Subtitle of the frame}
+  Hello
+  \begin{block}{Answered Questions}
+    How many primes are there?
+\end{block}
+\begin{block}{Open Questions}
+Is every even number the sum of two primes?
+\end{block}
+\begin{remark}[complements]
+Is this a relevant remark?
+\end{remark}
+\end{frame}
+
+\begin{frame}
+  \framesection{Paragraph}
+  \beamerbutton{Button}\beamerskipbutton{Skip Button}\beamerreturnbutton{Return}
+  \par
+  \structure{Test structure}
+  \alert{Test alert}
+  \boxalert{Test boxalert}
+
+  \begin{abstract}
+    This is an abstract.
+  \end{abstract}
+
+  \begin{information}
+    This is an information.
+  \end{information}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Block}
+    Test block
+  \end{block}
+  \begin{alertblock}{Alert Block}
+    Test block
+  \end{alertblock}
+  \begin{exampleblock}{Example Block}
+    Test block
+  \end{exampleblock}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{A Theorem on Infinite Sets}
+\begin{theorem}<1->
+There exists an infinite set.
+\end{theorem}
+\begin{proof}<2->
+This follows from the axiom of infinity.
+\end{proof}
+\begin{example}<3->[Natural Numbers]
+The set of natural numbers is infinite.
+\end{example}
+\begin{definition}[Title of def.]
+Test
+\end{definition}
+\begin{corollary}
+Test
+\end{corollary}
+\end{frame}
+
+\begin{frame}
+  \begin{beamercolorbox}{beamer color}
+Text\footnote{On a fast machine.}
+\end{beamercolorbox}
+\end{frame}
+
+\section{New one}
+
+\begin{frame}
+\sectionpage
+\end{frame}
+
+
+\part{Name of the part}
+\begin{frame}
+\partpage
+\end{frame}
+
+
+
+\begin{frame}
+\begin{itemize}
+\item<1-> Eggs
+\item<2-| alert@2> Plants
+  \begin{itemize}
+  \item test
+  \end{itemize}
+\note[item]<2>{Tell joke about plants.}
+\note[item]<2>{Make it short.}
+\item<3-> Animals
+\end{itemize}
+\begin{enumerate}
+\item<1-> Eggs
+\item<2-| alert@2> Plants
+\note[item]<2>{Tell joke about plants.}
+\note[item]<2>{Make it short.}
+\item<3-> Animals
+  \begin{enumerate}
+  \item Dog
+  \item Cat
+  \end{enumerate}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{2 columns}
+  \begin{columns}[t]
+    \begin{column}{5cm}
+      Two\\lines.
+    \end{column}
+    \begin{column}{5cm}
+      One line (but aligned).
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+
+\thanksframe{Thank you for your attention!}
+
+\appendix
+\section{\appendixname}
+\section{Appendix Name}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\subsection{Additional material}
+
+\begin{frame}
+Details
+\end{frame}
+
+
+\end{document}

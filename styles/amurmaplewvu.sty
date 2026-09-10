@@ -1,0 +1,47 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{amurmaplewvu}
+
+% Theme options
+\usetheme[
+  delaunay,           % use decorative pattern on "structure frames"
+  rule,               % adds a decorative line between color areas
+  sidebar,            % use detailed sidebar
+  % nogauge,          % suppresses the progress gauge
+  % nomail,           % suppress the email on the right margin of frame
+  % sidebarwidth=58pt % sidebarwidth is 58pt by default
+  % toplogo,          % logo at bottom by default
+  % leftframetitle,   % frame title on right by default
+]{Amurmaple}
+\usecolortheme{wvu}   % set up WVU colors and icon -- don't touch
+
+% There are three secondary colors to pick
+% Visit https://scm.wvu.edu/brand/visual-identity/#color to the colors available
+% Enter the color with no spaces, all lowercase (i.e., Star City Blue -> starcityblue)
+\colorlet{Amurmaple@alert}{woodburn}
+\colorlet{Amurmaple@info}{hemlock}
+\colorlet{Amurmaple@example}{oldgold}
+
+% Title page config
+\mail{email@mail.wvu.edu}
+\webpage{webpage.wvu.edu}
+\collaboration{collaboration}
+
+\author[AAA]{author}
+\institute[BBB]{institute}
+\date[CCC]{date}
+\title[DDD]{title}
+\subtitle[EEE]{subtitle}
+
+% Select the title_graphic you want to use under title_graphics/
+% You may also need to adjust the size
+\titlegraphic{
+\begin{figure}
+    \includegraphics
+    [scale=0.5] % scale
+    {title_graphics/BMSCOEAMR.png} % title graphic
+    \vspace*{\fill}
+\end{figure}
+}
+
+
+\endinput
