@@ -1,0 +1,60 @@
+%
+% Author: Dylan Gormley | dylan.gormley@mail.wvu.edu
+% WVU colors and logos with the Amurmaple Beamer theme.
+% Compile with LuaLaTeX and retain the 16:9 aspect ratio.
+%
+% User guide: start your own presentation in main.tex.
+% The public WVU theme handles the brand setup.
+%
+% Adapted from the Amurmaple theme author's example:
+% https://gitlab.gutenberg-asso.fr/mchupin/amurmaple/-/blob/main/test/beamer-amurmaple-black.tex
+\documentclass[aspectratio=169,10pt]{beamer}
+\usetheme{WVU}
+\title[WVU guide]{WVU presentation guide}
+\subtitle{Beamer and Amurmaple, with WVU styling}
+\author[Your name]{Your name}
+\institute[WVU]{West Virginia University}
+\date{\today}
+\mail{you@mail.wvu.edu}
+\webpage{https://example.org}
+\collaboration{Your collaboration}
+\wvusetup{logo=styles/gwac.pdf,logo-width=6.5cm}
+\usepackage{pgfpages}
+% Uncomment when preparing a presenter copy with speaker notes.
+% \setbeameroption{show notes on second screen}
+
+\pdfstringdefDisableCommands{%
+  \DeclareRobustCommand{\translate}[1]{#1}%
+}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Guide to this template}
+  \tableofcontents[hideallsubsections,sections={1-4}]
+  \vfill
+  \small Write ordinary Beamer slides, add Amurmaple's useful extras,
+  and let the theme handle the styling.
+\end{frame}
+
+\section[Start]{Getting started}
+\input{examples/01-getting-started}
+
+\section[Boxes]{Boxes and callouts}
+\input{examples/02-color-environments}
+
+\section[Slides]{Slide techniques}
+\input{examples/05-slide-techniques}
+
+\section[Extras]{WVU extras}
+\input{examples/03-patterns}
+\input{examples/04-tags}
+\input{examples/06-resources}
+
+% Keep the selected pattern consistent with the opening title.
+\thanksframe{Questions and discussion}
+
+\appendix
+\section[Reference]{Quick reference}
+\input{examples/07-reference}
+\end{document}

@@ -23,6 +23,40 @@
   }%
 }
 
+% Every tag family is available in the three published color treatments.
+% Prefer WVU's color tokens; keep the earlier short selectors as aliases.
+\@namedef{wvu@tag@color@wvu-gold}{gold}
+\@namedef{wvu@tag@color@wvu-blue}{blue}
+\@namedef{wvu@tag@color@wvu-not-quite-white}{offwhite}
+\@namedef{wvu@tag@color@gold}{gold}
+\@namedef{wvu@tag@color@blue}{blue}
+\@namedef{wvu@tag@color@offwhite}{offwhite}
+\@namedef{wvu@tag@color@not-quite-white}{offwhite}
+
+% Family selectors are this package's wrappers, not WVU utility class names.
+% The optional argument accepts graphicx options, such as height or angle.
+\DeclareRobustCommand{\wvutag}[3][height=1em]{%
+  \begingroup
+    \def\wvu@tag@valid{0}%
+    \@for\wvu@tag@family:=slash,arrow,corner-slash,location,poi\do{%
+      \edef\wvu@tag@requested{#2}%
+      \ifx\wvu@tag@family\wvu@tag@requested
+        \@ifundefined{wvu@tag@color@#3}{}{%
+          \def\wvu@tag@valid{1}%
+          \edef\wvu@tag@assetcolor{\csname wvu@tag@color@#3\endcsname}%
+        }%
+      \fi
+    }%
+    \ifnum\wvu@tag@valid=1\relax
+      \wvu@asset{#1}{#2-\wvu@tag@assetcolor}%
+    \else
+      \PackageError{wvubrand-elements}{Unknown tag '#2' or color '#3'}%
+        {Use slash, arrow, corner-slash, location, or poi with
+         wvu-gold, wvu-blue, or wvu-not-quite-white.}%
+    \fi
+  \endgroup
+}
+
 % These marks inherit the surrounding text size; dimensions are optional.
 \DeclareRobustCommand{\wvuslash}[1][.85em]{%
   \raisebox{-.10ex}{\wvu@asset{height=#1}{slash-gold}}%
@@ -35,6 +69,14 @@
 }
 \DeclareRobustCommand{\wvulocation}[1]{%
   \raisebox{-.22ex}{\wvu@asset{height=1.05em}{location-blue}}%
+  \nobreak\hspace{.32em}#1%
+}
+
+\DeclareRobustCommand{\wvucornerslash}[1][.85em]{%
+  \raisebox{-.10ex}{\wvutag[height=#1]{corner-slash}{wvu-gold}}%
+}
+\DeclareRobustCommand{\wvupoi}[1]{%
+  \raisebox{-.16ex}{\wvutag[height=.95em]{poi}{wvu-blue}}%
   \nobreak\hspace{.32em}#1%
 }
 
@@ -67,11 +109,14 @@
 
 % Preserve readable bookmark text for headings, location labels, and QR captions.
 \NewExpandableDocumentCommand{\wvu@pdf@qr}{O{2.2cm}mm}{#3}
+\NewExpandableDocumentCommand{\wvu@pdf@tag}{O{height=1em}mm}{}
 \AtBeginDocument{%
   \@ifpackageloaded{hyperref}{%
     \pdfstringdefDisableCommands{%
       \def\wvuheading#1{#1}%
       \def\wvulocation#1{#1}%
+      \def\wvupoi#1{#1}%
+      \let\wvutag\wvu@pdf@tag
       \let\wvuqr\wvu@pdf@qr
     }%
   }{}%

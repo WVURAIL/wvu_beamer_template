@@ -1,0 +1,109 @@
+% Start with the visual hierarchy, then show the complete supporting palette.
+\newcommand{\wvuguidepalettebar}[2]{%
+  \begingroup
+  \setlength{\fboxsep}{0pt}%
+  \colorbox{#1}{\rule{0pt}{#2}\rule{\linewidth}{0pt}}%
+  \endgroup
+}
+\newcommand{\wvuguideswatch}[3]{%
+  \begingroup
+  \setlength{\fboxsep}{0pt}%
+  \fcolorbox{wvu-coopers-gray}{#1}{\rule{0pt}{.34cm}%
+    \rule{\dimexpr\linewidth-2\fboxrule\relax}{0pt}}\par
+  \vspace{.04cm}
+  {\small\bfseries #2\par}
+  {\footnotesize #3\par}
+  \vspace{.23cm}
+  \endgroup
+}
+
+\begin{frame}{A clear color hierarchy}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.32\textwidth}
+      \begin{minipage}[t][1.10cm][t]{\linewidth}
+        \wvuguidepalettebar{wvu-blue}{.58cm}\par
+        \wvuguidepalettebar{wvu-gold}{.22cm}\par
+      \end{minipage}\par
+      \vspace{.12cm}
+      {\large\bfseries\color{wvu-blue}1. Primary\par}
+      \smallskip
+      {\bfseries Blue and Gold\par}
+      \smallskip
+      \small Titles, navigation, rules, and core brand elements.
+    \end{column}
+    \begin{column}{.29\textwidth}
+      \begin{minipage}[t][1.10cm][t]{\linewidth}
+        \wvuguidepalettebar{wvu-safety-blue}{.20cm}\par
+        \wvuguidepalettebar{wvu-hemlock}{.20cm}\par
+        \wvuguidepalettebar{wvu-wild-flour}{.20cm}\par
+      \end{minipage}\par
+      \vspace{.12cm}
+      {\large\bfseries\color{wvu-blue}2. Secondary\par}
+      \smallskip
+      {\bfseries State Partners\par}
+      \smallskip
+      \small Nine supporting colors for frequent callouts and neutral surfaces.
+    \end{column}
+    \begin{column}{.29\textwidth}
+      \begin{minipage}[t][1.10cm][t]{\linewidth}
+        \wvuguidepalettebar{wvu-buckskin}{.12cm}\par
+        \wvuguidepalettebar{wvu-canary}{.12cm}\par
+        \wvuguidepalettebar{wvu-sunset}{.12cm}\par
+      \end{minipage}\par
+      \vspace{.12cm}
+      {\large\bfseries\color{wvu-blue}3. Tertiary\par}
+      \smallskip
+      {\bfseries Remaining palette\par}
+      \smallskip
+      \small Five additional colors for specialized environments; use sparingly.
+    \end{column}
+  \end{columns}
+  \vspace{.40cm}
+  {\small\color{wvu-coal}These are template usage priorities. WVU classifies its colors as Primary, Secondary, and Neutral.}
+\end{frame}
+
+\begin{frame}{Start with the State Partners palette}
+  \framesubtitle{These nine supporting colors complement WVU Blue and Gold.}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.29\textwidth}
+      \wvuguideswatch{wvu-safety-blue}{Safety Blue}{General results}
+      \wvuguideswatch{wvu-hemlock}{Hemlock}{Helpful context}
+      \wvuguideswatch{wvu-woodburn}{Woodburn}{Cautions and limitations}
+    \end{column}
+    \begin{column}{.29\textwidth}
+      \wvuguideswatch{wvu-old-gold}{Old Gold}{Examples}
+      \wvuguideswatch{wvu-wild-flour}{Wild Flour}{Remarks}
+      \wvuguideswatch{wvu-star-city-blue}{Star City Blue}{Summaries}
+    \end{column}
+    \begin{column}{.29\textwidth}
+      \wvuguideswatch{wvu-not-quite-white}{Not Quite White}{Page and box backgrounds}
+      \wvuguideswatch{wvu-coopers-gray}{Coopers Gray}{Quiet details and corollaries}
+      \wvuguideswatch{wvu-coal}{Coal}{Body text and dark surfaces}
+    \end{column}
+  \end{columns}
+  \vspace{.08cm}
+  {\footnotesize Color selection follows WVU's State Partners toolkit; these uses are template choices.}
+\end{frame}
+
+\begin{frame}{Extend the palette with a purpose}
+  \framesubtitle{Use the other five approved colors for specialized material.}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.29\textwidth}
+      \wvuguideswatch{wvu-buckskin}{Buckskin}{Quotations}
+      \wvuguideswatch{wvu-rattler-gray}{Rattler Gray}{Theorems}
+    \end{column}
+    \begin{column}{.29\textwidth}
+      \wvuguideswatch{wvu-canary}{Canary}{Definitions}
+      \wvuguideswatch{wvu-seneca-gray}{Seneca Gray}{Lemmas}
+    \end{column}
+    \begin{column}{.29\textwidth}
+      \wvuguideswatch{wvu-sunset}{Sunset}{Facts}
+      \vspace{.15cm}
+      {\small\bfseries\color{wvu-blue}Keep the structure consistent.\par}
+      \smallskip
+      {\small Blue and Gold still lead, even when a box uses another accent.}
+    \end{column}
+  \end{columns}
+  \vspace{.20cm}
+  {\small Choose the environment for its meaning; its assigned color follows automatically.}
+\end{frame}

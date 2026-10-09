@@ -30,7 +30,7 @@
       }
 
       .cls-2 {
-        stroke: #0b74bb;
+        stroke: #0062A3;
       }
 
       .cls-2, .cls-3, .cls-4 {
@@ -43,7 +43,7 @@
       }
 
       .cls-12 {
-        fill: #f7f5f5;
+        fill: #F7F7F7;
       }
 
       .cls-3 {

@@ -1,0 +1,46 @@
+% Optional appendix. Keep the labels if using the navigation example.
+\begin{frame}[label=reference-start]{Where to make changes}
+  \begin{description}
+    \item[Your presentation] \path{main.tex} contains the title, author,
+      optional settings, and slides.
+    \item[Usage examples] \path{guide.tex} assembles the reusable examples
+      in \path{examples/}.
+    \item[Theme settings] Use \texttt{\string\usetheme\{WVU\}} and
+      \texttt{\string\wvusetup\{...\}} in your preamble.
+    \item[Instructions] \path{README.md} covers setup;
+      \path{beamer-amurmaple-doc.pdf} covers the parent theme's extra features.
+  \end{description}
+  \medskip
+  The theme files in \path{styles/} handle the brand details.
+  \par\medskip
+  \hyperlink{technique-navigation}{\beamerreturnbutton{Return to the navigation example}}
+\end{frame}
+
+\begin{frame}{Start your next presentation}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.47\textwidth}
+      \wvuheading{Keep the foundation}
+      \begin{enumerate}
+        \item Open \texttt{main.tex} and select LuaLaTeX.
+        \item Set the title, author, institute, and date.
+        \item Replace the three sample slides with your content.
+      \end{enumerate}
+      \medskip
+      \href{https://ctan.org/pkg/beamerthemeamurmaple}{\beamerbutton{Amurmaple documentation}}
+    \end{column}
+    \begin{column}{.49\textwidth}
+      \wvuheading{Optional settings}\par
+      \medskip
+      Select a pattern:
+      \par\smallskip
+      {\small\texttt{\detokenize{\wvusetup{pattern=topo-solid}}}}\par
+      \medskip
+      Add a tag in an approved treatment:
+      \par\smallskip
+      {\small\texttt{\detokenize{\wvutag{poi}{wvu-gold}}}}\par
+      \medskip
+      Use standard Beamer lists and boxes. Their appearance is automatic;
+      only add a setting when your presentation needs it.
+    \end{column}
+  \end{columns}
+\end{frame}
