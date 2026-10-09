@@ -11,57 +11,34 @@
 % The earlier topo selector remains an alias for Topo - Solid.
 \csdef{wvu@pattern@file@topo}{topo-white}
 \csdef{wvu@pattern@file@topo-solid}{topo-white}
-\csdef{wvu@pattern@file@distressed-lines}{distressed-lines-white}
-\csdef{wvu@pattern@file@rolling-hills}{rolling-hills-white}
-\csdef{wvu@pattern@file@topo-dashed}{topo-dashed-white}
-\csdef{wvu@pattern@file@topo-morgantown}{topo-morgantown-white}
 \newcommand{\wvupattern}[1]{%
   \ifcsdef{wvu@pattern@file@#1}{\def\wvu@pattern{#1}}{%
-    \ifstrequal{#1}{pinstripes}{\def\wvu@pattern{pinstripes}}{%
-      \ifstrequal{#1}{none}{\def\wvu@pattern{none}}{%
-        \PackageError{wvubrand-patterns}{Unknown pattern '#1'}%
-          {Choose topo-solid, pinstripes, distressed-lines, rolling-hills,
-           topo-dashed, topo-morgantown, or none.}%
-      }%
+    \ifstrequal{#1}{none}{\def\wvu@pattern{none}}{%
+      \PackageError{wvubrand-patterns}{Unknown pattern '#1'}%
+        {Choose topo-solid or none.}%
     }%
   }%
 }
 
-% Use vector sources where available; preserve the four published PNG textures.
+% Convert the vector artwork automatically during compilation.
 \newcommand{\wvu@pattern@image}{%
-  \IfFileExists{styles/patterns/\wvu@pattern@file.svg}{%
-    \edef\wvu@pattern@options{inkscapelatex=false,inkscapearea=page,\wvu@pattern@size}%
-    \expandafter\includesvg\expandafter[\wvu@pattern@options]{styles/patterns/\wvu@pattern@file.svg}%
-  }{%
-    \expandafter\includegraphics\expandafter[\wvu@pattern@size]{styles/patterns/\wvu@pattern@file.png}%
-  }%
+  \edef\wvu@pattern@options{inkscapelatex=false,inkscapearea=page,\wvu@pattern@size}%
+  \expandafter\includesvg\expandafter[\wvu@pattern@options]{styles/patterns/\wvu@pattern@file.svg}%
 }
 
 % Draw within the existing navy panel, before its rule and foreground text.
 \newcommand{\wvu@pattern@art}[1]{%
-  \ifdefstring{\wvu@pattern}{pinstripes}{%
-    \foreach \wvu@stripe in {-60,-59,...,80}{%
-      \draw[white,opacity=.12,line width=.35pt]
-        ([xshift=\wvu@stripe*6pt]current page.south west)
-        -- ++(\paperheight,\paperheight);%
-    }%
-  }{%
-    \ifdefstring{\wvu@pattern}{none}{}{%
-      \edef\wvu@pattern@file{\csuse{wvu@pattern@file@\wvu@pattern}}%
-      % Wide textures fill the panel by height; the original square topo
-      % retains its established size and placement.
-      \def\wvu@pattern@size{height=.72\paperheight}%
-      \ifdefstring{\wvu@pattern}{topo}{\def\wvu@pattern@size{width=.60\paperwidth}}{}%
-      \ifdefstring{\wvu@pattern}{topo-solid}{\def\wvu@pattern@size{width=.60\paperwidth}}{}%
-      \ifstrequal{#1}{upper}{%
-        \node[anchor=north west,inner sep=0pt,opacity=.14]
-          at ([xshift=-.08\paperwidth,yshift=.12\paperheight]current page.north west)
-          {\wvu@pattern@image};%
-      }{%
-        \node[anchor=south west,inner sep=0pt,opacity=.14]
-          at ([xshift=-.08\paperwidth,yshift=-.12\paperheight]current page.south west)
-          {\wvu@pattern@image};%
-      }%
+  \ifdefstring{\wvu@pattern}{none}{}{%
+    \edef\wvu@pattern@file{\csuse{wvu@pattern@file@\wvu@pattern}}%
+    \def\wvu@pattern@size{width=.60\paperwidth}%
+    \ifstrequal{#1}{upper}{%
+      \node[anchor=north west,inner sep=0pt,opacity=.14]
+        at ([xshift=-.08\paperwidth,yshift=.12\paperheight]current page.north west)
+        {\wvu@pattern@image};%
+    }{%
+      \node[anchor=south west,inner sep=0pt,opacity=.14]
+        at ([xshift=-.08\paperwidth,yshift=-.12\paperheight]current page.south west)
+        {\wvu@pattern@image};%
     }%
   }%
 }
