@@ -1,0 +1,80 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{wvubrand-elements}[2026/10/09 WVU presentation elements]
+
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage{xparse}
+\RequirePackage{qrcode}
+
+% Defaults also allow these elements to be used with another Beamer theme.
+\providecolor{wvu-blue}{RGB}{0,40,85}
+\providecolor{wvu-gold}{RGB}{238,170,0}
+
+% Resolve assets from the project root, styles directory, or TEXINPUTS.
+\newcommand{\wvu@asset}[2]{%
+  \IfFileExists{styles/brand/#2.pdf}{%
+    \includegraphics[#1]{styles/brand/#2.pdf}%
+  }{%
+    \IfFileExists{brand/#2.pdf}{%
+      \includegraphics[#1]{brand/#2.pdf}%
+    }{%
+      \includegraphics[#1]{#2.pdf}%
+    }%
+  }%
+}
+
+% These marks inherit the surrounding text size; dimensions are optional.
+\DeclareRobustCommand{\wvuslash}[1][.85em]{%
+  \raisebox{-.10ex}{\wvu@asset{height=#1}{slash-gold}}%
+}
+\DeclareRobustCommand{\wvuheading}[1]{%
+  \wvuslash\nobreak\hspace{.42em}#1%
+}
+\DeclareRobustCommand{\wvuarrow}[1][1.6em]{%
+  \raisebox{-.10ex}{\wvu@asset{width=#1}{arrow-gold}}%
+}
+\DeclareRobustCommand{\wvulocation}[1]{%
+  \raisebox{-.22ex}{\wvu@asset{height=1.05em}{location-blue}}%
+  \nobreak\hspace{.32em}#1%
+}
+
+\newsavebox{\wvu@qrbox}
+\newlength{\wvu@qrwidth}
+
+% Width includes the QR code's four-module quiet zone; the frame adds 2.75mm.
+% The caption sits below the frame and inherits the surrounding text color.
+\DeclareRobustCommand{\wvuqr}[3][2.2cm]{%
+  \begingroup
+    \setlength{\wvu@qrwidth}{#1}%
+    \setlength{\fboxsep}{1.2mm}%
+    \setlength{\fboxrule}{.5pt}%
+    \sbox{\wvu@qrbox}{%
+      \color{wvu-blue}%
+      \qrcode[height=\wvu@qrwidth,padding,level=M]{#2}%
+    }%
+    \begin{minipage}[t]{\dimexpr\wvu@qrwidth+2\fboxsep+2\fboxrule\relax}
+      \centering
+      \fcolorbox{wvu-blue}{white}{%
+        \resizebox{\wvu@qrwidth}{!}{\usebox{\wvu@qrbox}}%
+      }%
+      \if\relax\detokenize{#3}\relax\else
+        \par\vspace{.45em}%
+        {\footnotesize\wvuslash[.7em]\nobreak\hspace{.3em}#3\par}%
+      \fi
+    \end{minipage}%
+  \endgroup
+}
+
+% Preserve readable bookmark text for headings, location labels, and QR captions.
+\NewExpandableDocumentCommand{\wvu@pdf@qr}{O{2.2cm}mm}{#3}
+\AtBeginDocument{%
+  \@ifpackageloaded{hyperref}{%
+    \pdfstringdefDisableCommands{%
+      \def\wvuheading#1{#1}%
+      \def\wvulocation#1{#1}%
+      \let\wvuqr\wvu@pdf@qr
+    }%
+  }{}%
+}
+
+\endinput

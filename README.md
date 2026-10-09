@@ -11,6 +11,7 @@ the [Amurmaple theme](https://ctan.org/pkg/beamerthemeamurmaple).
 3. Choose a title graphic and secondary colors in that same file. The default
    is the vector GWAC logo; the other college graphics remain in `title_graphics/`.
 4. Replace the example slides in `main.tex`, retaining `aspectratio=169`.
+   Remove `\input{brand-examples}` when you no longer need the brand examples.
 
 Compile with **LuaLaTeX**, using a TeX Live installation that includes Beamer,
 Amurmaple, its dependencies, and `latexmk`. CI uses the full TeX Live 2025
@@ -47,6 +48,38 @@ With `rsvg-convert` installed, run:
 rsvg-convert -f pdf1.5 -o styles/gwac.pdf styles/gwac.svg
 rsvg-convert -f pdf1.5 -o styles/wv_logo.pdf styles/wv_logo.svg
 ```
+
+## Patterns and graphic elements
+
+`styles/amurmaplewvu.sty` selects `\wvupattern{topo}` by default. Use
+`\wvupattern{pinstripes}` for fine diagonal lines, or `\wvupattern{none}`
+for a plain background. Patterns appear on title, section, and closing frames;
+the content background and sidebar keep their existing layout. A switch inside
+a TeX group applies only to that group.
+
+The included `brand-examples.tex` demonstrates a pinstripe divider, arrows,
+location markers, and a QR resources slide. Reuse these commands in your slides:
+
+```latex
+\begin{frame}{\wvuheading{A key finding}}
+  Raw data \quad\wvuarrow\quad Analysis
+
+  \bigskip
+  \wvulocation{Observing site}
+
+  \bigskip
+  \wvuqr[2.5cm]{https://example.org}{Paper and slides}
+\end{frame}
+```
+
+`\wvuslash[height]` and `\wvuarrow[width]` have optional size controls;
+`\wvuheading{text}` combines a slash with a heading. `\wvuqr[width]{URL}{caption}`
+generates a vector QR code with a white quiet zone, navy frame, and gold caption
+accent. Replace the example URL with your own resource. The QR package is
+included with TeX Live and Overleaf.
+
+The patterns and marks remain vectors in the PDF. Their published source artwork
+and regeneration instructions are documented in [styles/brand/SOURCES.md](styles/brand/SOURCES.md).
 
 ## Check changes
 

@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54.06 74.36"><defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill: none;
+      }
+
+      .cls-5 {
+        fill: #002855;
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath-4);
+      }
+
+      .cls-9 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-10 {
+        clip-path: url(#clippath-5);
+      }
+
+      .cls-2 {
+        stroke: #0b74bb;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-11 {
+        fill: #EEAA00;
+      }
+
+      .cls-12 {
+        fill: #f7f5f5;
+      }
+
+      .cls-3 {
+        stroke: #EEAA00;
+      }
+
+      .cls-4 {
+        stroke: #002855;
+      }
+
+      .cls-13 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" x="64.92" width="54.06" height="74.36" />
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" x="64.92" y="0" width="54.06" height="74.36" />
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-1" width="54.06" height="74.36" />
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect class="cls-1" y="0" width="54.06" height="74.36" />
+    </clipPath>
+    <clipPath id="clippath-4">
+      <rect class="cls-1" x="130.03" width="54.06" height="74.36" />
+    </clipPath>
+    <clipPath id="clippath-5">
+      <rect class="cls-1" x="130.03" y="0" width="54.06" height="74.36" />
+    </clipPath>
+  </defs>
+  <g id="Location-Tag-295">
+    <g class="cls-9">
+      <g class="cls-7">
+        <path class="cls-5" d="M29.13,1.08C14.45-.09,1.03,12.26,1,26.98c-.01,4.32,1.03,8.38,2.88,11.94l.54,1,20.56,32.3c.97,1.51,3.18,1.51,4.14,0l20.65-32.55.42-.75c1.83-3.54,2.88-7.59,2.88-11.88,0-13.68-10.56-24.9-23.93-25.97M27.05,17.92c4.58,0,8.34,3.75,8.34,8.38s-3.75,8.38-8.34,8.38-8.38-3.75-8.38-8.38,3.75-8.38,8.38-8.38" />
+        <path class="cls-3" d="M29.13,1.08C14.45-.09,1.03,12.26,1,26.98c-.01,4.32,1.03,8.38,2.88,11.94l.54,1,20.56,32.3c.97,1.51,3.18,1.51,4.14,0l20.65-32.55.42-.75c1.83-3.54,2.88-7.59,2.88-11.88,0-13.68-10.56-24.9-23.93-25.97ZM27.05,17.92c4.58,0,8.34,3.75,8.34,8.38s-3.75,8.38-8.34,8.38-8.38-3.75-8.38-8.38,3.75-8.38,8.38-8.38Z" />
+      </g>
+    </g>
+  </g>
+  </svg>

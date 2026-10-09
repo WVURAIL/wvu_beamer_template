@@ -1,0 +1,85 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{wvubrand-patterns}[2026/10/09 WVU structure-slide patterns]
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\RequirePackage{xpatch}
+\usetikzlibrary{fadings}
+
+\makeatletter
+\def\wvu@pattern{topo}
+\newcommand{\wvupattern}[1]{%
+  \ifstrequal{#1}{topo}{\def\wvu@pattern{topo}}{%
+    \ifstrequal{#1}{pinstripes}{\def\wvu@pattern{pinstripes}}{%
+      \ifstrequal{#1}{none}{\def\wvu@pattern{none}}{%
+        \PackageError{wvubrand-patterns}{Unknown pattern '#1'}%
+          {Choose topo, pinstripes, or none.}%
+      }%
+    }%
+  }%
+}
+
+% Draw within the existing navy panel, before its rule and foreground text.
+\newcommand{\wvu@pattern@art}[1]{%
+  \ifdefstring{\wvu@pattern}{topo}{%
+    \ifstrequal{#1}{upper}{%
+      \node[anchor=north west,inner sep=0pt,opacity=.14]
+        at ([xshift=-.08\paperwidth,yshift=.12\paperheight]current page.north west)
+        {\includegraphics[width=.60\paperwidth]{styles/brand/topo-white.pdf}};%
+    }{%
+      \node[anchor=south west,inner sep=0pt,opacity=.14]
+        at ([xshift=-.08\paperwidth,yshift=-.12\paperheight]current page.south west)
+        {\includegraphics[width=.60\paperwidth]{styles/brand/topo-white.pdf}};%
+    }%
+  }{%
+    \ifdefstring{\wvu@pattern}{pinstripes}{%
+      \foreach \wvu@stripe in {-60,-59,...,80}{%
+        \draw[white,opacity=.12,line width=.35pt]
+          ([xshift=\wvu@stripe*6pt]current page.south west)
+          -- ++(\paperheight,\paperheight);%
+      }%
+    }{}%
+  }%
+}
+\newcommand{\wvu@pattern@lower}{%
+  \begin{scope}
+    \clip (current page.south west)
+      rectangle ([xshift=.42\paperwidth,yshift=15pt]current page.west);
+    \wvu@pattern@art{lower}%
+    \fill[structure,path fading=west]
+      ([xshift=.24\paperwidth]current page.south west)
+      rectangle ([xshift=.42\paperwidth,yshift=15pt]current page.west);
+  \end{scope}%
+}
+\newcommand{\wvu@pattern@upper}{%
+  \begin{scope}
+    \clip ([yshift=15pt]current page.west)
+      rectangle ([xshift=.42\paperwidth]current page.north west);
+    \wvu@pattern@art{upper}%
+    \fill[structure,path fading=west]
+      ([xshift=.24\paperwidth,yshift=15pt]current page.west)
+      rectangle ([xshift=.42\paperwidth]current page.north west);
+  \end{scope}%
+}
+
+% Keep Amurmaple's layouts; replace only its decorative mesh.
+\beamer@am@delaunayfalse
+\newcommand{\wvu@pattern@patcherror}[1]{%
+  \PackageError{wvubrand-patterns}{Could not add pattern to #1}%
+    {This package expects the Amurmaple structure-slide templates.}%
+}
+\newcommand{\wvu@pattern@patch}[2]{%
+  \expandafter\xpatchcmd\csname#1\endcsname
+    {\ifbeamer@am@rule}{#2\ifbeamer@am@rule}{}%
+    {\wvu@pattern@patcherror{#1}}%
+}
+\ExplSyntaxOn
+\char_set_catcode_space:n {32}
+\wvu@pattern@patch{beamer@@tmpl@title~page}{\wvu@pattern@lower}
+\wvu@pattern@patch{sepframe~code}{\wvu@pattern@lower}
+\ExplSyntaxOff
+\wvu@pattern@patch{beamer@@tmpl@section page}{\wvu@pattern@lower}
+\wvu@pattern@patch{beamer@@tmpl@part page}{\wvu@pattern@upper}
+% xparse stores these commands' executable bodies separately.
+\wvu@pattern@patch{thanksframe code}{\wvu@pattern@lower}
+\makeatother
+\endinput
