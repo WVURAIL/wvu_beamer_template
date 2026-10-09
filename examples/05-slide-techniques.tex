@@ -1,0 +1,62 @@
+% Reusable content layouts. Copy the frame you need into your own section.
+\begin{frame}{Compare two ideas clearly}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.47\textwidth}
+      \wvuheading{The question}
+      \medskip
+
+      What should the audience understand before seeing the result?
+      \begin{itemize}
+        \item State one concrete question.
+        \item Define only the terms it needs.
+        \item Keep the context brief.
+      \end{itemize}
+    \end{column}
+    \begin{column}{.47\textwidth}
+      \wvuheading{The evidence}
+      \medskip
+
+      What observation answers that question?
+      \begin{itemize}
+        \item Show the most useful comparison.
+        \item Name its main limitation.
+        \item End with the takeaway.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \medskip
+  \begin{information}[Layout tip]
+    Align columns at the top so the reader can compare them naturally.
+  \end{information}
+\end{frame}
+
+\begin{frame}{Reveal an argument in three steps}
+  \begin{enumerate}
+    \item<1-> \textbf{Ask.} Begin with the question the audience needs answered.
+    \item<2-> \textbf{Show.} Introduce the evidence that supports the result.
+      \begin{itemize}
+        \item<2-> Keep related detail with the claim it explains.
+      \end{itemize}
+    \item<3-> \textbf{Explain.} Connect the result to its practical meaning.
+  \end{enumerate}
+  \medskip
+  \uncover<3->{\wvuheading{One reveal should advance one idea.}}
+  \note[item]<1>{Introduce the question before describing the method.}
+  \note[item]<2>{Explain why this evidence answers the question.}
+  \note[item]<3>{Pause on the takeaway before advancing.}
+  % To export presenter notes in your own talk, load pgfpages and enable
+  % \setbeameroption{show notes on second screen=right} in the preamble.
+\end{frame}
+
+\begin{frame}[label=technique-navigation]{Keep supporting detail within reach}
+  Keep the main slide focused on its \alert{essential message}.
+  Put longer explanations, settings, and backup material in the appendix.\footnote{Use footnotes for brief context or a source, not another paragraph.}
+
+  \medskip
+  \begin{beamercolorbox}[sep=.8em,wd=\linewidth]{palette primary}
+    \textbf{During questions:} jump to the supporting detail, then return to
+    the same slide.
+  \end{beamercolorbox}
+  \medskip
+  \hyperlink{reference-start}{\beamerskipbutton{Open the quick reference}}
+\end{frame}

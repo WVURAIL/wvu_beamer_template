@@ -1,0 +1,82 @@
+% The complete family first, followed by two practical uses.
+\begin{frame}{\wvuheading{Five tags, three color treatments}}
+  \centering
+  \setlength{\tabcolsep}{.43cm}
+  \renewcommand{\arraystretch}{1.45}
+  \begin{tabular}{lccc}
+    & \textbf{Gold} & \textbf{Blue} & \textbf{Not Quite White} \\
+    Slashes & \wvutag[height=.48cm]{slash}{wvu-gold}
+      & \wvutag[height=.48cm]{slash}{wvu-blue}
+      & \colorbox{wvu-blue}{\wvutag[height=.48cm]{slash}{wvu-not-quite-white}} \\
+    Arrows & \wvutag[height=.48cm]{arrow}{wvu-gold}
+      & \wvutag[height=.48cm]{arrow}{wvu-blue}
+      & \colorbox{wvu-blue}{\wvutag[height=.48cm]{arrow}{wvu-not-quite-white}} \\
+    Corner Slashes & \wvutag[height=.48cm]{corner-slash}{wvu-gold}
+      & \wvutag[height=.48cm]{corner-slash}{wvu-blue}
+      & \colorbox{wvu-blue}{\wvutag[height=.48cm]{corner-slash}{wvu-not-quite-white}} \\
+    Locations & \wvutag[height=.48cm]{location}{wvu-gold}
+      & \wvutag[height=.48cm]{location}{wvu-blue}
+      & \colorbox{wvu-blue}{\wvutag[height=.48cm]{location}{wvu-not-quite-white}} \\
+    POIs & \wvutag[height=.48cm]{poi}{wvu-gold}
+      & \wvutag[height=.48cm]{poi}{wvu-blue}
+      & \colorbox{wvu-blue}{\wvutag[height=.48cm]{poi}{wvu-not-quite-white}} \\
+  \end{tabular}
+
+  \medskip
+  {\footnotesize Use a tag to direct attention; give it space and a clear purpose.\par}
+  \smallskip
+  {\scriptsize\texttt{\string\wvutag[height=.48cm]\{arrow\}\{wvu-gold\}}\par}
+\end{frame}
+
+\begin{frame}{\wvuheading{Show a process with arrows}}
+  \centering
+  \begin{tikzpicture}[x=.34\linewidth,
+    stage/.style={font=\large\bfseries,text=wvu-blue,align=center},
+    detail/.style={anchor=north,text width=.27\linewidth,align=center}]
+    \node[stage] (observe) at (0,0) {Observe};
+    \node[stage] (analyze) at (1,0) {Analyze};
+    \node[stage] (share) at (2,0) {Share};
+    \node at ($(observe.east)!.5!(analyze.west)$) {\wvuarrow[1.1em]};
+    \node at ($(analyze.east)!.5!(share.west)$) {\wvuarrow[1.1em]};
+    \node[detail] at ([yshift=-.28cm]observe.south)
+      {Capture signals from the instrument.};
+    \node[detail] at ([yshift=-.28cm]analyze.south)
+      {Calibrate, compare, and interpret.};
+    \node[detail] at ([yshift=-.28cm]share.south)
+      {Make the result useful to others.};
+  \end{tikzpicture}
+
+  \vspace{.8cm}
+  {\bfseries\color{wvu-blue}\wvuheading{The key result}\par}
+  \smallskip
+  State the one finding your audience should remember.
+  \bigskip
+
+  {\footnotesize\texttt{\string\wvuarrow[1.1em]}\quad
+    \texttt{\string\wvuheading\{The key result\}}\par}
+\end{frame}
+
+\begin{frame}{\wvuheading{Mark a place or a point of interest}}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.47\textwidth}
+      {\large\bfseries\color{wvu-blue}\wvulocation{Observing site}\par}
+      \medskip
+      Identify the physical location where the data were collected.
+      \bigskip
+
+      {\large\bfseries\color{wvu-blue}\wvupoi{Notable feature}\par}
+      \medskip
+      Draw attention to a destination, feature, or detail.
+    \end{column}
+    \begin{column}{.47\textwidth}
+      \wvucornerslash[.75cm]\par\medskip
+      {\large\bfseries\color{wvu-blue}A result to remember\par}
+      \medskip
+      A corner slash can introduce a short, prominent message.
+    \end{column}
+  \end{columns}
+  \bigskip
+  {\footnotesize\texttt{\string\wvulocation\{Observing site\}}\quad
+    \texttt{\string\wvupoi\{Notable feature\}}\par
+    \smallskip\texttt{\string\wvucornerslash[.75cm]}\par}
+\end{frame}

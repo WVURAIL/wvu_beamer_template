@@ -1,7 +1,8 @@
-% Sets the most fundemental WVU theme settings.
+% WVU colors for the Amurmaple theme and its environments.
 
-% wvu brand palette: web-optimized hex values (as of Oct 10, 2025)
-% source: https://scm.wvu.edu/brand/visual-identity/
+% WVU palette: retain the established SCM web-optimized color values.
+% Values: https://scm.wvu.edu/brand/visual-identity/
+% Names: https://designsystem.wvu.edu/utilities/cheat-sheet/
 
 % Provides a wvu theme for beamer
 \ProvidesPackage{beamercolorthemewvu}
@@ -21,26 +22,218 @@
 % logo
 \logo{\;\includegraphics[width=1.8cm]{styles/wv_logo.pdf}}
 
-% WVU's secondary palette is split into two catagories, "accent" and "neutral"
+% WVU's secondary palette is split into two categories, "accent" and "neutral"
 % Just establish them here, they are selected later
 
 % accent palette
-\definecolor{starcityblue}{RGB}{157,218,230}
-\definecolor{safetyblue}{RGB}{00,98,163}
-\definecolor{canary}{RGB}{247,221,99}
-\definecolor{sunset}{RGB}{245,134,114}
-\definecolor{woodburn}{RGB}{141,70,56}
-\definecolor{hemlock}{RGB}{106,114,79}
-\definecolor{wildflour}{RGB}{242,230,194}
-\definecolor{buckskin}{RGB}{179,161,105}
-\definecolor{oldgold}{RGB}{127,99,16}
+\definecolor{wvu-star-city-blue}{RGB}{157,218,230}
+\definecolor{wvu-safety-blue}{RGB}{00,98,163}
+\definecolor{wvu-canary}{RGB}{247,221,99}
+\definecolor{wvu-sunset}{RGB}{245,134,114}
+\definecolor{wvu-woodburn}{RGB}{141,70,56}
+\definecolor{wvu-hemlock}{RGB}{106,114,79}
+\definecolor{wvu-wild-flour}{RGB}{242,230,194}
+\definecolor{wvu-buckskin}{RGB}{179,161,105}
+\definecolor{wvu-old-gold}{RGB}{127,99,16}
 
 % neutral palette
-\definecolor{rattlergray}{RGB}{85,71,65}
-\definecolor{notquitewhite}{RGB}{247,247,247}
-\definecolor{coopersgray}{RGB}{190,183,179}
-\definecolor{senecagray}{RGB}{152,142,139}
-\definecolor{coal}{RGB}{28,43,57}
+\definecolor{wvu-rattler-gray}{RGB}{85,71,65}
+\definecolor{wvu-not-quite-white}{RGB}{247,247,247}
+\definecolor{wvu-coopers-gray}{RGB}{190,183,179}
+\definecolor{wvu-seneca-gray}{RGB}{152,142,139}
+\definecolor{wvu-coal}{RGB}{28,43,57}
 
+
+% Keep earlier compact names working in existing presentations.
+\colorlet{starcityblue}{wvu-star-city-blue}
+\colorlet{safetyblue}{wvu-safety-blue}
+\colorlet{canary}{wvu-canary}
+\colorlet{sunset}{wvu-sunset}
+\colorlet{woodburn}{wvu-woodburn}
+\colorlet{hemlock}{wvu-hemlock}
+\colorlet{wildflour}{wvu-wild-flour}
+\colorlet{buckskin}{wvu-buckskin}
+\colorlet{oldgold}{wvu-old-gold}
+\colorlet{rattlergray}{wvu-rattler-gray}
+\colorlet{notquitewhite}{wvu-not-quite-white}
+\colorlet{coopersgray}{wvu-coopers-gray}
+\colorlet{senecagray}{wvu-seneca-gray}
+\colorlet{coal}{wvu-coal}
+
+% Semantic colors: plural names and compatibility aliases share their family.
+\colorlet{Amurmaple@alert}{wvu-woodburn}
+\colorlet{Amurmaple@info}{wvu-hemlock}
+\colorlet{Amurmaple@example}{wvu-old-gold}
+% Favor the State Partners palette for frequent callouts.
+\colorlet{AmurmapleRemarkColor}{wvu-wild-flour}
+\colorlet{wvu-block}{wvu-safety-blue}
+\colorlet{wvu-abstract}{wvu-star-city-blue}
+\colorlet{wvu-quotation}{wvu-buckskin}
+\colorlet{wvu-theorem}{wvu-rattler-gray}
+\colorlet{wvu-definition}{wvu-canary}
+\colorlet{wvu-corollary}{wvu-coopers-gray}
+\colorlet{wvu-lemma}{wvu-seneca-gray}
+\colorlet{wvu-fact}{wvu-sunset}
+\colorlet{wvu-problem}{wvu-coal}
+\colorlet{wvu-solution}{wvu-not-quite-white}
+\colorlet{wvu-proof}{wvu-gold}
+
+% Use named palette colors instead of the parent theme's arbitrary gray tints.
+\setbeamercolor{normal text}{fg=wvu-coal,bg=wvu-not-quite-white}
+\setbeamercolor{background canvas}{bg=wvu-not-quite-white}
+\setbeamercolor{structure}{fg=wvu-blue}
+\setbeamercolor{local structure}{fg=wvu-blue}
+\setbeamercolor{alerted text}{fg=Amurmaple@alert,bg=wvu-wild-flour}
+\setbeamercolor{example text}{fg=Amurmaple@example}
+\setbeamercolor{palette primary}{fg=wvu-blue,bg=wvu-not-quite-white}
+\setbeamercolor{palette secondary}{fg=wvu-safety-blue,bg=wvu-not-quite-white}
+\setbeamercolor{palette tertiary}{fg=wvu-coal,bg=wvu-not-quite-white}
+\setbeamercolor{palette quaternary}{fg=wvu-coal,bg=wvu-not-quite-white}
+\setbeamercolor{palette sidebar primary}{fg=wvu-not-quite-white,bg=wvu-blue}
+\setbeamercolor{palette sidebar secondary}{fg=wvu-not-quite-white,bg=wvu-blue}
+\setbeamercolor{palette sidebar tertiary}{fg=wvu-coopers-gray,bg=wvu-blue}
+\setbeamercolor{palette sidebar quaternary}{fg=wvu-not-quite-white,bg=wvu-blue}
+\setbeamercolor{sidebar}{fg=wvu-not-quite-white,bg=}
+\setbeamercolor{title in sidebar}{fg=wvu-not-quite-white}
+\setbeamercolor{author in sidebar}{fg=wvu-coopers-gray}
+\setbeamercolor{section in sidebar}{fg=wvu-not-quite-white,bg=wvu-coal}
+\setbeamercolor{subsection in sidebar}{fg=wvu-not-quite-white,bg=wvu-coal}
+\setbeamercolor{section in sidebar shaded}{fg=wvu-coopers-gray,bg=wvu-blue}
+\setbeamercolor{subsection in sidebar shaded}{fg=wvu-coopers-gray,bg=wvu-blue}
+\setbeamercolor{section in toc}{fg=wvu-blue}
+\setbeamercolor{subsection in toc}{fg=wvu-rattler-gray}
+\setbeamercolor{section in toc shaded}{fg=wvu-seneca-gray}
+\setbeamercolor{subsection in toc shaded}{fg=wvu-seneca-gray}
+\setbeamercolor{section number projected}{fg=wvu-blue,bg=wvu-not-quite-white}
+\setbeamercolor{mail}{fg=wvu-safety-blue}
+\setbeamercolor{item}{fg=wvu-blue}
+\setbeamercolor{itemize item}{fg=wvu-safety-blue}
+\setbeamercolor{itemize subitem}{fg=wvu-hemlock}
+\setbeamercolor{itemize subsubitem}{fg=wvu-old-gold}
+\setbeamercolor{enumerate item}{fg=wvu-not-quite-white,bg=wvu-safety-blue}
+\setbeamercolor{enumerate subitem}{fg=wvu-hemlock}
+\setbeamercolor{enumerate subsubitem}{fg=wvu-old-gold}
+\setbeamercolor{item projected}{fg=wvu-not-quite-white,bg=wvu-safety-blue}
+\setbeamercolor{description item}{fg=wvu-safety-blue,bg=wvu-not-quite-white}
+\setbeamercolor{button}{fg=wvu-not-quite-white,bg=wvu-safety-blue}
+\setbeamercolor{button border}{fg=wvu-blue}
+\setbeamercolor{navigation symbols}{fg=wvu-safety-blue}
+\setbeamercolor{navigation symbols dimmed}{fg=wvu-seneca-gray}
+\setbeamercolor{bibliography entry author}{fg=wvu-blue}
+\setbeamercolor{bibliography entry title}{fg=wvu-coal}
+\setbeamercolor{bibliography entry location}{fg=wvu-rattler-gray}
+\setbeamercolor{bibliography entry note}{fg=wvu-rattler-gray}
+\setbeamercolor{note page}{fg=wvu-coal,bg=wvu-not-quite-white}
+\setbeamercolor{note title}{fg=wvu-coal,bg=wvu-coopers-gray}
+\setbeamercolor{beamer color}{fg=wvu-coal,bg=wvu-not-quite-white}
+
+\setbeamercolor{block title}{fg=wvu-not-quite-white,bg=wvu-block}
+\setbeamercolor{block body}{fg=wvu-coal,bg=wvu-not-quite-white}
+\setbeamercolor{block title alerted}{fg=wvu-not-quite-white,bg=Amurmaple@alert}
+\setbeamercolor{block body alerted}{fg=wvu-coal,bg=wvu-not-quite-white}
+\setbeamercolor{block title example}{fg=wvu-not-quite-white,bg=Amurmaple@example}
+\setbeamercolor{block body example}{fg=wvu-coal,bg=wvu-not-quite-white}
+
+% These hooks run after the parent theme's theorem-specific color choices.
+\newcommand{\wvu@mathcolors}[2]{%
+  \setbeamercolor{block title}{bg=#1,fg=#2}%
+  \setbeamercolor{block body}{bg=wvu-not-quite-white,fg=wvu-coal}%
+}
+\AtBeginEnvironment{theorem}{\wvu@mathcolors{wvu-theorem}{wvu-not-quite-white}}
+\AtBeginEnvironment{definition}{\wvu@mathcolors{wvu-definition}{wvu-coal}}
+\AtBeginEnvironment{definitions}{\wvu@mathcolors{wvu-definition}{wvu-coal}}
+\AtBeginEnvironment{corollary}{\wvu@mathcolors{wvu-corollary}{wvu-coal}}
+\AtBeginEnvironment{lemma}{\wvu@mathcolors{wvu-lemma}{wvu-coal}}
+\AtBeginEnvironment{fact}{\wvu@mathcolors{wvu-fact}{wvu-coal}}
+\AtBeginEnvironment{problem}{\wvu@mathcolors{wvu-problem}{wvu-not-quite-white}}
+\AtBeginEnvironment{solution}{%
+  \wvu@mathcolors{wvu-solution}{wvu-coal}%
+  \setbeamercolor{block body}{bg=wvu-coal,fg=wvu-not-quite-white}%
+}
+\AtBeginEnvironment{proof}{\wvu@mathcolors{wvu-proof}{wvu-coal}}
+% Beamer's legacy German names are separate environments, not aliases.
+\AtBeginEnvironment{Satz}{\wvu@mathcolors{wvu-theorem}{wvu-not-quite-white}}
+\AtBeginEnvironment{Folgerung}{\wvu@mathcolors{wvu-corollary}{wvu-coal}}
+\AtBeginEnvironment{Fakt}{\wvu@mathcolors{wvu-fact}{wvu-coal}}
+\AtBeginEnvironment{Loesung}{%
+  \wvu@mathcolors{wvu-solution}{wvu-coal}%
+  \setbeamercolor{block body}{bg=wvu-coal,fg=wvu-not-quite-white}%
+}
+
+% Explicit tcolorbox colors also cover a plain tcolorbox added to a talk.
+\tcbset{colback=wvu-not-quite-white,coltext=wvu-coal,colframe=wvu-coopers-gray,
+  colbacktitle=wvu-coopers-gray,coltitle=wvu-coal}
+
+\RenewDocumentEnvironment{abstract}{}{%
+  \begin{tcolorbox}[boxrule=0pt,frame hidden,sharp corners,enhanced,
+    colback=wvu-not-quite-white,coltext=wvu-coal,
+    borderline north={2pt}{0pt}{wvu-abstract},
+    borderline south={2pt}{0pt}{wvu-abstract}]
+    \begin{center}\bfseries\abstractname\end{center}\itshape
+}{\end{tcolorbox}}
+
+\RenewDocumentEnvironment{quotation}{o}{%
+  \begin{tcolorbox}[boxrule=0pt,frame hidden,sharp corners,enhanced,
+    colback=wvu-not-quite-white,coltext=wvu-coal,
+    top=1mm,bottom=1mm,
+    borderline west={4pt}{0pt}{wvu-quotation}]\itshape
+}{%
+  \IfNoValueF{#1}{\begin{flushright}\normalfont #1\end{flushright}}%
+  \end{tcolorbox}%
+}
+
+\RenewDocumentEnvironment{information}{o}{%
+  \begin{tcolorbox}[leftrule=1mm,rightrule=0mm,toprule=0mm,bottomrule=0mm,
+    colframe=Amurmaple@info,colback=wvu-not-quite-white,coltext=wvu-coal,
+    sharp corners,detach title,coltitle=wvu-coal,
+    before title={\amurmaple@info~},fonttitle=\bfseries\sffamily,
+    before upper={\tcbtitle\par\medskip},
+    title={\IfNoValueTF{#1}{\translate{Information}}{#1}}]
+}{\end{tcolorbox}}
+
+\RenewDocumentEnvironment{remark}{o}{%
+  \smallskip
+  \begin{tcolorbox}[arc=0pt,outer arc=0pt,
+    colback=wvu-not-quite-white,coltext=wvu-coal,colframe=AmurmapleRemarkColor,
+    colbacktitle=AmurmapleRemarkColor,coltitle=wvu-coal,
+    boxsep=0pt,left=10pt,right=10pt,top=8pt,bottom=10pt,
+    bottomtitle=3pt,toptitle=3pt,boxrule=0pt,fonttitle=\bfseries,
+    title={\translate{Remark}\IfNoValueF{#1}{ (#1)}}]
+}{\end{tcolorbox}\medskip}
+
+\setbeamertemplate{button}{\tikz
+  \node[inner xsep=4pt,minimum height=2em,draw=wvu-blue,
+    fill=wvu-safety-blue,text=wvu-not-quite-white,rounded corners=1pt,align=center]
+    {\footnotesize\insertbuttontext};}
+
+% Amurmaple embeds several literal colors in its drawing templates.
+% Patch only those templates; do not redefine global black/white (QR codes,
+% imported artwork, and user figures may require their original colors).
+\RequirePackage{xpatch}
+\newcommand{\wvu@replacecolor}[3]{%
+  \expandafter\xpatchcmd\csname#1\endcsname{#2}{#3}%
+    {\wvu@replacecolor{#1}{#2}{#3}}{}%
+}
+\ExplSyntaxOn
+\char_set_catcode_space:n {32}
+\AtBeginDocument{%
+  % xpatch must retokenize Amurmaple's expl3 drawing commands in the same mode.
+  \ExplSyntaxOn
+  \char_set_catcode_space:n {32}
+  \wvu@replacecolor{beamer@@tmpl@background}{color=black!40}{color=wvu-seneca-gray}%
+  \wvu@replacecolor{beamer@@tmpl@navigation~symbols}{\color{black}}{\color{wvu-coal}}%
+  \wvu@replacecolor{beamer@@tmpl@title~page}{\textcolor{gray}}{\textcolor{wvu-rattler-gray}}%
+  \wvu@replacecolor{beamer@@tmpl@title~page}{\textcolor{black}}{\textcolor{wvu-coal}}%
+  \clist_map_inline:nn {beamer@@tmpl@title~page,beamer@@tmpl@section~page,
+    beamer@@tmpl@part~page,beamer@@tmpl@background,sepframe~code,
+    thanksframe~code,amurmaple@gauge~code}{%
+    \wvu@replacecolor{#1}{{white}}{{wvu-not-quite-white}}%
+    \wvu@replacecolor{#1}{[white]}{[wvu-not-quite-white]}%
+    \wvu@replacecolor{#1}{=white}{=wvu-not-quite-white}%
+    \wvu@replacecolor{#1}{,white,}{,wvu-not-quite-white,}%
+  }%
+  \ExplSyntaxOff
+}
+\ExplSyntaxOff
 
 \mode<all>

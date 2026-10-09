@@ -1,0 +1,100 @@
+% Compact previews of the navy panel used by title and divider slides.
+% Keep the texture scale, crop, opacity, fade, and rule matched to the theme.
+\makeatletter
+\newcommand{\wvupatternsample}[1]{%
+  \begingroup
+  \wvupattern{#1}%
+  \resizebox{\linewidth}{!}{%
+    \begin{tikzpicture}
+      \path[use as bounding box] (0,0)
+        rectangle (\paperwidth,.5\paperheight+15pt);
+      \clip (0,0) rectangle (\paperwidth,.5\paperheight+15pt);
+      \fill[wvu-blue] (0,0)
+        rectangle (\paperwidth,.5\paperheight+15pt);
+      \begin{scope}
+        \clip (0,0) rectangle (.42\paperwidth,.5\paperheight+15pt);
+        \ifdefstring{\wvu@pattern}{pinstripes}{%
+          \foreach \wvu@stripe in {-60,-59,...,80}{%
+            \draw[white,opacity=.12,line width=.35pt]
+              (\wvu@stripe*6pt,0) -- ++(\paperheight,\paperheight);
+          }%
+        }{%
+          \edef\wvu@pattern@file{\csuse{wvu@pattern@file@\wvu@pattern}}%
+          \def\wvu@pattern@size{height=.72\paperheight}%
+          \ifdefstring{\wvu@pattern}{topo}{\def\wvu@pattern@size{width=.60\paperwidth}}{}%
+          \ifdefstring{\wvu@pattern}{topo-solid}{\def\wvu@pattern@size{width=.60\paperwidth}}{}%
+          \node[anchor=south west,inner sep=0pt,opacity=.14]
+            at (-.08\paperwidth,-.12\paperheight)
+            {\expandafter\includegraphics\expandafter[\wvu@pattern@size]{styles/brand/\wvu@pattern@file.pdf}};
+        }%
+        \fill[wvu-blue,path fading=west] (.24\paperwidth,0)
+          rectangle (.42\paperwidth,.5\paperheight+15pt);
+      \end{scope}
+      \fill[wvu-gold] (0,.5\paperheight+10pt)
+        rectangle (\paperwidth,.5\paperheight+15pt);
+    \end{tikzpicture}%
+  }%
+  \endgroup
+}
+\makeatother
+
+\begin{frame}{\wvuheading{Start with a restrained pattern}}
+  Patterns support the Blue and Gold structure without competing with the message.
+  \bigskip
+
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.47\textwidth}
+      {\large\bfseries\color{wvu-blue}Topo - Solid\par}
+      \smallskip
+      \wvupatternsample{topo-solid}
+      \smallskip
+      {\footnotesize\texttt{\string\wvupattern\{topo-solid\}}\par}
+      \medskip
+      The template's default: a subtle connection to West Virginia's terrain.
+    \end{column}
+    \begin{column}{.47\textwidth}
+      {\large\bfseries\color{wvu-blue}Pinstripes\par}
+      \smallskip
+      \wvupatternsample{pinstripes}
+      \smallskip
+      {\footnotesize\texttt{\string\wvupattern\{pinstripes\}}\par}
+      \medskip
+      A simple alternative when a clean, orderly texture suits the presentation.
+    \end{column}
+  \end{columns}
+
+  \bigskip
+  {\small\textbf{\textcolor{wvu-blue}{Use one pattern consistently.}}\par
+  Carry the same texture through title, section, and closing slides.
+  Content slides stay quiet.}
+\end{frame}
+
+\begin{frame}{\wvuheading{Four more texture options}}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.47\textwidth}
+      {\bfseries\color{wvu-blue}Distressed Lines\par}
+      \smallskip
+      \wvupatternsample{distressed-lines}
+      {\scriptsize\texttt{\string\wvupattern\{distressed-lines\}}\par}
+      \medskip
+      {\bfseries\color{wvu-blue}Topo - Dashed\par}
+      \smallskip
+      \wvupatternsample{topo-dashed}
+      {\scriptsize\texttt{\string\wvupattern\{topo-dashed\}}\par}
+    \end{column}
+    \begin{column}{.47\textwidth}
+      {\bfseries\color{wvu-blue}Rolling Hills\par}
+      \smallskip
+      \wvupatternsample{rolling-hills}
+      {\scriptsize\texttt{\string\wvupattern\{rolling-hills\}}\par}
+      \medskip
+      {\bfseries\color{wvu-blue}Topo - Morgantown\par}
+      \smallskip
+      \wvupatternsample{topo-morgantown}
+      {\scriptsize\texttt{\string\wvupattern\{topo-morgantown\}}\par}
+    \end{column}
+  \end{columns}
+  \medskip
+  {\footnotesize For a solid WVU Blue panel, choose \texttt{\string\wvupattern\{none\}}.
+  Set it with \texttt{\string\wvusetup\{pattern=topo-solid\}} in your preamble.}
+\end{frame}

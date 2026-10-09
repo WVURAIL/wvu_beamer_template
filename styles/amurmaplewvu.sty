@@ -1,55 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{amurmaplewvu}
+\ProvidesPackage{amurmaplewvu}[2026/10/09 Compatibility entry for the WVU theme]
 
-% Theme options
-\usetheme[
-  rule,               % adds a decorative line between color areas
-  sidebar,            % use detailed sidebar
-  % nogauge,          % suppresses the progress gauge
-  % nomail,           % suppress the email on the right margin of frame
-  % sidebarwidth=58pt % sidebarwidth is 58pt by default
-  % toplogo,          % logo at bottom by default
-  % leftframetitle,   % frame title on right by default
-]{Amurmaple}
-\usecolortheme{wvu}   % set up WVU colors and icon -- don't touch
-
-% TeX Gyre Heros is a Helvetica-compatible font included with TeX Live and Overleaf.
-\RequirePackage{fontspec}
-\setsansfont{TeX Gyre Heros}
-
-% WVU patterns on title, section, and closing slides.
-\RequirePackage{wvubrand-patterns}
-\RequirePackage{wvubrand-elements}
-\wvupattern{topo} % topo, pinstripes, or none
-
-% There are three secondary colors to pick
-% Visit https://scm.wvu.edu/brand/visual-identity/#color to the colors available
-% Enter the color with no spaces, all lowercase (i.e., Star City Blue -> starcityblue)
-\colorlet{Amurmaple@alert}{woodburn}
-\colorlet{Amurmaple@info}{hemlock}
-\colorlet{Amurmaple@example}{oldgold}
-
-% Title page config
-\mail{email@mail.wvu.edu}
-\webpage{webpage.wvu.edu}
-\collaboration{collaboration}
-
-\author[AAA]{author}
-\institute[BBB]{institute}
-\date[CCC]{date}
-\title[DDD]{title}
-\subtitle[EEE]{subtitle}
-
-% You may need to adjust the size
-\titlegraphic{
-\begin{figure}
-    % The theme anchors this graphic in a narrow box; retain its full width.
-    \makebox[\linewidth][l]{%
-        \includegraphics[scale=0.5]{styles/gwac.pdf}%
-    }
-    \vspace*{\fill}
-\end{figure}
-}
-
-
+% Existing presentations may keep \usepackage{amurmaplewvu}.
+% New presentations use \usetheme{WVU} and standard Beamer metadata commands.
+\RequirePackage{beamerthemeWVU}
 \endinput

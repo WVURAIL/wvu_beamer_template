@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58.5 58.5"><defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #002855;
+      }
+
+      .cls-2, .cls-3, .cls-5 {
+        stroke-width: 2px;
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath-4);
+      }
+
+      .cls-9 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-10 {
+        clip-path: url(#clippath-5);
+      }
+
+      .cls-3 {
+        stroke: #0062A3;
+      }
+
+      .cls-3, .cls-4 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4, .cls-5 {
+        stroke: #EEAA00;
+      }
+
+      .cls-11 {
+        fill: #F7F7F7;
+      }
+
+      .cls-12 {
+        fill: #EEAA00;
+      }
+
+      .cls-13 {
+        fill: #002855;
+      }
+
+      .cls-14 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="58.5" height="58.5" />
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" y="0" width="58.5" height="58.5" />
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-1" x="62.79" width="58.5" height="58.5" />
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect class="cls-1" x="62.79" y="0" width="58.5" height="58.5" />
+    </clipPath>
+    <clipPath id="clippath-4">
+      <rect class="cls-1" x="125.58" width="58.5" height="58.5" />
+    </clipPath>
+    <clipPath id="clippath-5">
+      <rect class="cls-1" x="125.58" y="0" width="58.5" height="58.5" />
+    </clipPath>
+  </defs>
+  <g id="POI-Tag-295">
+    <g class="cls-14">
+      <g class="cls-6">
+        <path class="cls-13" d="M29.25,57.5c15.6,0,28.25-12.65,28.25-28.25S44.85,1,29.25,1,1,13.65,1,29.25s12.65,28.25,28.25,28.25" />
+        <path class="cls-4" d="M29.25,57.5c15.6,0,28.25-12.65,28.25-28.25S44.85,1,29.25,1,1,13.65,1,29.25s12.65,28.25,28.25,28.25" />
+        <path class="cls-5" d="M45.17,28.75H13.15M29.25,12.63v32.02M29.25,57.5c15.6,0,28.25-12.65,28.25-28.25S44.85,1,29.25,1,1,13.65,1,29.25s12.65,28.25,28.25,28.25Z" />
+      </g>
+    </g>
+  </g>
+  </svg>

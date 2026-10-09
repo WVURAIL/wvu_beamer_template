@@ -1,0 +1,132 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeWVU}[2026/10/09 WVU presentation theme]
+
+% Find the bundled support files during an ordinary LuaLaTeX build.
+\makeatletter
+\providecommand{\input@path}{}
+\edef\input@path{{styles/}\input@path}
+\RequirePackage{etoolbox}
+
+\newif\ifwvu@sidebar
+\wvu@sidebartrue
+\def\wvu@initialpattern{topo-solid}
+\DeclareOptionBeamer{pattern}{\def\wvu@initialpattern{#1}}
+\DeclareOptionBeamer{sidebar}[true]{%
+  \ifstrequal{#1}{true}{\wvu@sidebartrue}{%
+    \ifstrequal{#1}{false}{\wvu@sidebarfalse}{%
+      \PackageError{beamerthemeWVU}{Unknown sidebar value '#1'}%
+        {Use sidebar=true or sidebar=false.}%
+    }%
+  }%
+}
+% Original Amurmaple layout options retain their native behavior.
+\DeclareOptionBeamer{nogauge}{\PassOptionsToPackage{nogauge}{beamerthemeAmurmaple}}
+\DeclareOptionBeamer{nomail}{\PassOptionsToPackage{nomail}{beamerthemeAmurmaple}}
+\DeclareOptionBeamer{sidebarwidth}{\PassOptionsToPackage{sidebarwidth=#1}{beamerthemeAmurmaple}}
+\DeclareOptionBeamer{toplogo}{\PassOptionsToPackage{toplogo}{beamerthemeAmurmaple}}
+\DeclareOptionBeamer{leftframetitle}{\PassOptionsToPackage{leftframetitle}{beamerthemeAmurmaple}}
+\ProcessOptionsBeamer
+
+% Retain Amurmaple's layouts underneath the public WVU theme.
+\ifwvu@sidebar
+  \usetheme[rule,sidebar]{Amurmaple}
+\else
+  \usetheme[rule]{Amurmaple}
+\fi
+\usecolortheme{wvu}
+\RequirePackage{fontspec}
+\setsansfont{TeX Gyre Heros}
+\RequirePackage{wvubrand-patterns}
+\RequirePackage{wvubrand-elements}
+\makeatletter
+\expandafter\wvupattern\expandafter{\wvu@initialpattern}
+
+% Empty optional metadata must not create blank lines or empty URL links.
+\ExplSyntaxOn
+\char_set_catcode_space:n {32}
+\expandafter\xpatchcmd\csname beamer@@tmpl@title~page\endcsname
+  {\IfValueT{\l_amurmaple_mail_tl}}{\tl_if_empty:NF\l_amurmaple_mail_tl}{}%
+  {\PackageError{beamerthemeWVU}{Could not configure optional email}{Check the Amurmaple version.}}
+\expandafter\xpatchcmd\csname beamer@@tmpl@title~page\endcsname
+  {\IfValueT{\l_amurmaple_webpage_tl}}{\tl_if_empty:NF\l_amurmaple_webpage_tl}{}%
+  {\PackageError{beamerthemeWVU}{Could not configure optional website}{Check the Amurmaple version.}}
+\expandafter\xpatchcmd\csname beamer@@tmpl@title~page\endcsname
+  {\IfValueT{\l_amurmaple_collab_tl}}{\tl_if_empty:NF\l_amurmaple_collab_tl}{}%
+  {\PackageError{beamerthemeWVU}{Could not configure optional collaboration}{Check the Amurmaple version.}}
+\ExplSyntaxOff
+
+% The background already paints the sidebar. Avoid the outer theme's shading.
+\setbeamertemplate{sidebar canvas left}{}
+\setbeamertemplate{sidebar canvas right}{}
+
+% Leave a little space above the native top-logo placement.
+\ifbeamer@am@toplogo
+  \addtobeamertemplate{sidebar left}{\vskip6pt}{}
+\fi
+
+% The graphic box hugs the artwork; placement belongs to the slide template.
+\def\wvu@logofile{styles/wv_logo.pdf}
+\def\wvu@logowidth{2cm}
+\newcommand{\wvu@titlelogo}{%
+  \includegraphics[width=\wvu@logowidth]{\wvu@logofile}%
+}
+\newcommand{\wvu@setlogo}[1]{%
+  \def\wvu@logofile{#1}%
+  \ifstrequal{#1}{none}{\titlegraphic{}}{\titlegraphic{\wvu@titlelogo}}%
+}
+\wvu@setlogo{styles/wv_logo.pdf}
+
+% Center title and closing artwork in the panel above the gold rule.
+% Keep native \titlegraphic and \thanksframe[graphic] overrides working.
+\newcommand{\wvu@centergraphic}[2]{%
+  \expandafter\xpatchcmd\csname#1\endcsname
+    {anchor=south west}{anchor=west,inner xsep=3.33pt,inner ysep=0pt}{}%
+    {\PackageError{beamerthemeWVU}{Could not center graphic in #1}{Check the Amurmaple version.}}%
+  \expandafter\xpatchcmd\csname#1\endcsname
+    {[yshift=20pt]current page.west}%
+    {[yshift=.25\paperheight+7.5pt]current page.west}{}%
+    {\PackageError{beamerthemeWVU}{Could not position graphic in #1}{Check the Amurmaple version.}}%
+  \expandafter\xpatchcmd\csname#1\endcsname
+    {\parbox[t]{.19\paperwidth}{\raggedleft\usebeamercolor[fg]{titlegraphic}#2}}%
+    {\usebeamercolor[fg]{titlegraphic}#2}{}%
+    {\PackageError{beamerthemeWVU}{Could not unwrap graphic in #1}{Check the Amurmaple version.}}%
+}
+\ExplSyntaxOn
+\char_set_catcode_space:n {32}
+\wvu@centergraphic{beamer@@tmpl@title~page}{\inserttitlegraphic}
+\ExplSyntaxOff
+\wvu@centergraphic{thanksframe code}{\amurmaple@finalgraphic}
+
+% Optional settings; title, author, institute, and date use standard Beamer.
+\pgfkeys{
+  /wvu/.is family,
+  /wvu,
+  pattern/.code={\wvupattern{#1}},
+  logo/.code={\wvu@setlogo{#1}},
+  logo-width/.store in=\wvu@logowidth,
+  email/.code={\mail{#1}},
+  website/.code={\webpage{#1}},
+  collaboration/.code={\collaboration{#1}},
+  alert-color/.code={\colorlet{Amurmaple@alert}{#1}},
+  info-color/.code={\colorlet{Amurmaple@info}{#1}},
+  example-color/.code={\colorlet{Amurmaple@example}{#1}}
+}
+\newcommand{\wvusetup}[1]{\pgfkeys{/wvu/.cd,#1}}
+
+% A standalone \maketitle must not leave invisible sidebar links on the title.
+% Existing explicit frame/\titlepage usage retains standard Beamer behavior.
+\renewcommand{\maketitle}{%
+  \ifbeamer@inframe
+    \titlepage
+  \else
+    \begingroup
+      \setbeamertemplate{background}{}
+      \setbeamertemplate{navigation symbols}{}
+      \begin{frame}[plain,noframenumbering]
+        \titlepage
+      \end{frame}
+    \endgroup
+  \fi
+}
+\makeatother
+\endinput

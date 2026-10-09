@@ -3,7 +3,19 @@ name: Build template
 on:
   push:
     branches: [main]
+    paths:
+      - '**/*.tex'
+      - '**/*.sty'
+      - 'styles/**'
+      - 'latexmkrc'
+      - '.github/workflows/checks.yml'
   pull_request:
+    paths:
+      - '**/*.tex'
+      - '**/*.sty'
+      - 'styles/**'
+      - 'latexmkrc'
+      - '.github/workflows/checks.yml'
   workflow_dispatch:
 
 permissions:
@@ -21,16 +33,25 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Compile with LuaLaTeX
+      - name: Compile the starter and guide with LuaLaTeX
         uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b # v4.1.0
         with:
-          root_file: main.tex
+          root_file: |
+            main.tex
+            guide.tex
           latexmk_use_lualatex: true
           texlive_version: 2025
-      - name: Save the compiled example
+      - name: Save the compiled starter
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: wvu-beamer-example
           path: main.pdf
+          if-no-files-found: error
+          retention-days: 14
+      - name: Save the compiled guide
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: wvu-beamer-guide
+          path: guide.pdf
           if-no-files-found: error
           retention-days: 14

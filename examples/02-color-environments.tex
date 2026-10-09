@@ -1,0 +1,117 @@
+% Choose environments by purpose; the theme supplies their appearance.
+\begin{frame}[fragile]{Everyday blocks}
+  \framesubtitle{Give a result, highlight a limitation, or show an example.}
+  \small
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.47\textwidth}
+      \begin{block}{Main result}
+        State the finding in one sentence.
+      \end{block}
+      \begin{alertblock}{Limitation}
+        Explain what affects the interpretation.
+      \end{alertblock}
+      \begin{exampleblock}{Example}
+        Show a concrete application.
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{.49\textwidth}
+      {\footnotesize
+\begin{verbatim}
+\begin{block}{Main result}
+  State the finding.
+\end{block}
+
+\begin{alertblock}{Limitation}
+  Explain the limitation.
+\end{alertblock}
+
+\begin{exampleblock}{Example}
+  Show an application.
+\end{exampleblock}
+\end{verbatim}
+      }
+      \smallskip
+      Titles use braces; put your content inside the environment.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Context, remarks, and quotations}
+  \framesubtitle{Amurmaple adds information and remark boxes.}
+  \small
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.47\textwidth}
+      \begin{information}[Data quality]
+        This panel gives context needed to understand the result.
+      \end{information}
+      \begin{remark}[A useful caveat]
+        Add a brief observation without interrupting the main argument.
+      \end{remark}
+      \smallskip
+      Square brackets add an optional title or note. Omit them for the
+      default heading.
+    \end{column}
+    \begin{column}{.49\textwidth}
+      {\footnotesize
+\begin{verbatim}
+\begin{information}[Data quality]
+  Add useful context.
+\end{information}
+
+\begin{remark}[A useful caveat]
+  Add a brief observation.
+\end{remark}
+\end{verbatim}
+      }
+      \smallskip
+      \textbf{Other useful formats}\par
+      {\footnotesize
+\begin{verbatim}
+\begin{quotation}[Source]
+  A short quotation.
+\end{quotation}
+\begin{abstract}
+  A brief overview.
+\end{abstract}
+\end{verbatim}
+      }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Mathematical statements}
+  \framesubtitle{Use the standard Beamer environments for structured arguments.}
+  \small
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.47\textwidth}
+      \begin{definition}[Sampling interval]
+        \(\Delta t\) is the time between samples.
+      \end{definition}
+      \begin{theorem}[Positive sample rate]
+        If \(\Delta t>0\), then \(1/\Delta t>0\).
+      \end{theorem}
+      \begin{proof}
+        The reciprocal of a positive number is positive.
+      \end{proof}
+    \end{column}
+    \begin{column}{.49\textwidth}
+      {\footnotesize
+\begin{verbatim}
+\begin{theorem}[Positive rate]
+  State the claim.
+\end{theorem}
+\begin{proof}
+  Give the argument.
+\end{proof}
+\end{verbatim}
+      }
+      \smallskip
+      \textbf{Use the same pattern for}\par
+      \texttt{definition}, \texttt{lemma}, \texttt{corollary},
+      \texttt{fact}, \texttt{problem}, and \texttt{solution}.
+      \medskip\par
+      The bracketed description is optional. Replace both environment
+      names when adapting an example.
+    \end{column}
+  \end{columns}
+\end{frame}

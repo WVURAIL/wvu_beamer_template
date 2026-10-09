@@ -1,0 +1,148 @@
+% Copy these examples into main.tex; the theme supplies the appearance.
+\begin{frame}[fragile]{Start with an ordinary Beamer file}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.56\textwidth}
+      \small
+\begin{verbatim}
+\documentclass[aspectratio=169]{beamer}
+\usetheme{WVU}
+\title{Presentation title}
+\author{Your name}
+\institute{West Virginia University}
+\date{\today}
+
+\begin{document}
+\maketitle
+% Your frames go here.
+\thanksframe{Questions?}
+\end{document}
+\end{verbatim}
+    \end{column}
+    \begin{column}{.40\textwidth}
+      \begin{enumerate}
+        \item Open \texttt{main.tex}.
+        \item Choose \textbf{LuaLaTeX}.
+        \item Update your details.
+        \item Replace the sample slides.
+      \end{enumerate}
+      \medskip
+      Keep \texttt{beamerthemeWVU.sty} and the \texttt{styles/} folder
+      beside your document.
+      \medskip
+
+      Fonts, bullets, boxes, and backgrounds are already set up.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Keep Amurmaple's contact and layout features}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.50\textwidth}
+      \textbf{Your details in the preamble}
+      {\small
+\begin{verbatim}
+\mail{you@mail.wvu.edu}
+\webpage{https://example.org}
+\collaboration{Your collaboration}
+\end{verbatim}
+      }
+      Email appears on the title and along the right edge of content
+      slides. The webpage appears on the title; collaboration appears
+      below the title and subtitle.
+      \medskip
+
+      Replace the starter's examples with your own details. Leave a field
+      empty if you do not need it.
+    \end{column}
+    \begin{column}{.46\textwidth}
+      \textbf{Familiar layout options}
+      \begin{description}
+        \item[\texttt{nogauge}] Hide the progress gauge.
+        \item[\texttt{nomail}] Hide only the margin email.
+        \item[\texttt{toplogo}] Put the sidebar logo at the top.
+        \item[\texttt{leftframetitle}] Align slide titles left.
+        \item[\texttt{sidebarwidth}] Set the sidebar width.
+      \end{description}
+      {\small
+\begin{verbatim}
+\usetheme[toplogo,
+  sidebarwidth=64pt]{WVU}
+\end{verbatim}
+      }
+      Replace your existing theme line when choosing options.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]{Use familiar sections, frames, and lists}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.54\textwidth}
+      \small
+\begin{verbatim}
+\section{Results}
+\begin{frame}{The main finding}
+  \begin{itemize}
+    \item State the result.
+    \item Explain the evidence.
+      \begin{itemize}
+        \item Add supporting detail.
+      \end{itemize}
+  \end{itemize}
+  \alert{The key takeaway.}
+\end{frame}
+\end{verbatim}
+    \end{column}
+    \begin{column}{.42\textwidth}
+      \begin{itemize}
+        \item State the result.
+        \item Explain the evidence.
+          \begin{itemize}
+            \item Add supporting detail.
+          \end{itemize}
+      \end{itemize}
+      \medskip
+      \alert{The key takeaway.}
+      \bigskip
+
+      Use \texttt{enumerate} for numbered lists. Sections populate the
+      sidebar automatically.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Add Amurmaple's extra features}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{.53\textwidth}
+      \textbf{Inside a frame}
+      {\small
+\begin{verbatim}
+\framesection{A short heading}
+\boxalert{A point to remember}
+\end{verbatim}
+      }
+      \framesection{A short heading}
+      \boxalert{A point to remember}
+      \bigskip
+
+      The next pages show \texttt{information}, \texttt{remark}, and
+      the standard Beamer boxes.
+    \end{column}
+    \begin{column}{.43\textwidth}
+      \textbf{Between frames}
+      {\small
+\begin{verbatim}
+\section{Results}
+\sepframe[title={Results}]
+
+% ... your result slides ...
+\thanksframe{Questions?}
+\end{verbatim}
+      }
+      These commands create complete divider and closing slides.
+      \medskip
+
+      For the full Amurmaple reference, see the bundled
+      \texttt{beamer-amurmaple-doc.pdf}.
+    \end{column}
+  \end{columns}
+\end{frame}
