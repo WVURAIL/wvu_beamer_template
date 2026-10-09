@@ -40,6 +40,8 @@ jobs:
             main.tex
             guide.tex
           latexmk_use_lualatex: true
+          latexmk_shell_escape: true
+          extra_system_packages: inkscape
           texlive_version: 2025
       - name: Save the compiled starter
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

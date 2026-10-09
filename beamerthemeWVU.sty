@@ -33,6 +33,7 @@
 \else
   \usetheme[rule]{Amurmaple}
 \fi
+\RequirePackage{svg}
 \usecolortheme{wvu}
 \RequirePackage{fontspec}
 \setsansfont{TeX Gyre Heros}
@@ -65,16 +66,16 @@
 \fi
 
 % The graphic box hugs the artwork; placement belongs to the slide template.
-\def\wvu@logofile{styles/wv_logo.pdf}
-\def\wvu@logowidth{2cm}
+\def\wvu@logofile{styles/gwac.svg}
+\def\wvu@logowidth{6.5cm}
 \newcommand{\wvu@titlelogo}{%
-  \includegraphics[width=\wvu@logowidth]{\wvu@logofile}%
+  \includesvg[inkscapelatex=false,inkscapearea=page,width=\wvu@logowidth]{\wvu@logofile}%
 }
 \newcommand{\wvu@setlogo}[1]{%
   \def\wvu@logofile{#1}%
   \ifstrequal{#1}{none}{\titlegraphic{}}{\titlegraphic{\wvu@titlelogo}}%
 }
-\wvu@setlogo{styles/wv_logo.pdf}
+\wvu@setlogo{styles/gwac.svg}
 
 % Center title and closing artwork in the panel above the gold rule.
 % Keep native \titlegraphic and \thanksframe[graphic] overrides working.

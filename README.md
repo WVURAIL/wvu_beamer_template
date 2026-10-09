@@ -12,11 +12,11 @@ logos, and background patterns automatically.
    slides in `main.tex`.
 4. Compile. Open `guide.tex` separately when you want examples to copy.
 
-The starter loads the theme with `\usetheme{WVU}`. Keep `beamerthemeWVU.sty`
-and the complete `styles/` directory beside your presentation file. Those are
-the only project support files needed for a new talk; keep any figures you use
-alongside them. A local TeX installation also needs Beamer, Amurmaple, and their
-dependencies, available through TeX Live or MiKTeX.
+The starter loads the theme with `\usetheme{WVU}`. Keep `beamerthemeWVU.sty`,
+`latexmkrc`, and the complete `styles/` directory beside your presentation file,
+along with any figures you use. A local TeX installation also needs Beamer,
+Amurmaple, the `svg` package, and their dependencies, available through TeX Live
+or MiKTeX. Install Inkscape for automatic SVG conversion.
 
 | File | Use |
 | --- | --- |
@@ -24,6 +24,7 @@ dependencies, available through TeX Live or MiKTeX.
 | `guide.tex` | Beamer and Amurmaple examples with the WVU theme |
 | `examples/` | Individual guide sections and reusable slide layouts |
 | `beamerthemeWVU.sty`, `styles/` | Theme implementation and bundled artwork |
+| `latexmkrc` | Compiler settings and automatic SVG conversion |
 | `beamer-amurmaple-doc.pdf` | The original Amurmaple manual |
 
 ## Write your slides
@@ -132,17 +133,18 @@ The default pattern is **Topo - Solid** (`topo-solid`). Other selectors are
 `pinstripes`, `distressed-lines`, `rolling-hills`, `topo-dashed`,
 `topo-morgantown`, and `none`. The guide shows each pattern.
 
-Choose a title and closing graphic in the preamble:
+The GWAC SVG is the default title and closing graphic. To adjust its size,
+add this to the preamble:
 
 ```latex
 \wvusetup{
-  logo=styles/gwac.pdf,
   logo-width=6.5cm
 }
 ```
 
-Every setting is optional. The default graphic is the Flying WV; `logo=none`
-omits the title and closing graphic. Standard `\titlegraphic{...}` also works.
+Every setting is optional. Use `logo=path/to/your-logo.svg` for a different SVG
+or `logo=none` to omit the title and closing graphic. Standard
+`\titlegraphic{...}` also works for custom content or other image formats.
 Change the pattern later with `\wvusetup{pattern=rolling-hills}`; a change
 inside a TeX group applies only within that group.
 
@@ -166,10 +168,13 @@ latexmk -lualatex -file-line-error -halt-on-error -interaction=nonstopmode main.
 latexmk -lualatex -file-line-error -halt-on-error -interaction=nonstopmode guide.tex
 ```
 
-The outputs are `main.pdf` and `guide.pdf`. Normal builds use the bundled PDF
-artwork directly and do not need image conversion or shell escape. The theme
-finds its support files itself; `latexmkrc` also preserves support for the
-older `\usepackage{amurmaplewvu}` entry point.
+The outputs are `main.pdf` and `guide.pdf`. The title and sidebar logos use SVG
+sources. The `svg` package converts them through Inkscape during compilation;
+`latexmkrc` enables the required shell escape automatically. For a local build,
+make sure the `inkscape` command is available on your PATH. Generated files in
+`svg-inkscape/` are a build cache and do not need to be edited or distributed.
+The theme finds its support files itself; `latexmkrc` also preserves support
+for the older `\usepackage{amurmaplewvu}` entry point.
 
 GitHub Actions builds both documents. After a successful **Build template** run,
 the **wvu-beamer-example** and **wvu-beamer-guide** artifacts contain the PDFs.
