@@ -2,6 +2,7 @@
 \ProvidesPackage{wvubrand-elements}[2026/10/09 WVU presentation elements]
 
 \RequirePackage{graphicx}
+\RequirePackage{svg}
 \RequirePackage{xcolor}
 \RequirePackage{xparse}
 \RequirePackage{qrcode}
@@ -12,13 +13,13 @@
 
 % Resolve assets from the project root, styles directory, or TEXINPUTS.
 \newcommand{\wvu@asset}[2]{%
-  \IfFileExists{styles/brand/#2.pdf}{%
-    \includegraphics[#1]{styles/brand/#2.pdf}%
+  \IfFileExists{styles/tags/#2.svg}{%
+    \includesvg[inkscapelatex=false,inkscapearea=page,#1]{styles/tags/#2.svg}%
   }{%
-    \IfFileExists{brand/#2.pdf}{%
-      \includegraphics[#1]{brand/#2.pdf}%
+    \IfFileExists{tags/#2.svg}{%
+      \includesvg[inkscapelatex=false,inkscapearea=page,#1]{tags/#2.svg}%
     }{%
-      \includegraphics[#1]{#2.pdf}%
+      \includesvg[inkscapelatex=false,inkscapearea=page,#1]{#2.svg}%
     }%
   }%
 }
