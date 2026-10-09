@@ -1,6 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wvubrand-patterns}[2026/10/09 WVU structure-slide patterns]
 \RequirePackage{graphicx}
+\RequirePackage{svg}
 \RequirePackage{tikz}
 \RequirePackage{xpatch}
 \usetikzlibrary{fadings}
@@ -26,6 +27,16 @@
   }%
 }
 
+% Use vector sources where available; preserve the four published PNG textures.
+\newcommand{\wvu@pattern@image}{%
+  \IfFileExists{styles/patterns/\wvu@pattern@file.svg}{%
+    \edef\wvu@pattern@options{inkscapelatex=false,inkscapearea=page,\wvu@pattern@size}%
+    \expandafter\includesvg\expandafter[\wvu@pattern@options]{styles/patterns/\wvu@pattern@file.svg}%
+  }{%
+    \expandafter\includegraphics\expandafter[\wvu@pattern@size]{styles/patterns/\wvu@pattern@file.png}%
+  }%
+}
+
 % Draw within the existing navy panel, before its rule and foreground text.
 \newcommand{\wvu@pattern@art}[1]{%
   \ifdefstring{\wvu@pattern}{pinstripes}{%
@@ -45,11 +56,11 @@
       \ifstrequal{#1}{upper}{%
         \node[anchor=north west,inner sep=0pt,opacity=.14]
           at ([xshift=-.08\paperwidth,yshift=.12\paperheight]current page.north west)
-          {\expandafter\includegraphics\expandafter[\wvu@pattern@size]{styles/brand/\wvu@pattern@file.pdf}};%
+          {\wvu@pattern@image};%
       }{%
         \node[anchor=south west,inner sep=0pt,opacity=.14]
           at ([xshift=-.08\paperwidth,yshift=-.12\paperheight]current page.south west)
-          {\expandafter\includegraphics\expandafter[\wvu@pattern@size]{styles/brand/\wvu@pattern@file.pdf}};%
+          {\wvu@pattern@image};%
       }%
     }%
   }%

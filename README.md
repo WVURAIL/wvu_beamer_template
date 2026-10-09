@@ -27,6 +27,9 @@ or MiKTeX. Install Inkscape for automatic SVG conversion.
 | `latexmkrc` | Compiler settings and automatic SVG conversion |
 | `beamer-amurmaple-doc.pdf` | The original Amurmaple manual |
 
+Artwork is organized in `styles/patterns/` and `styles/tags/`. The theme handles
+it automatically; you do not need to prepare separate PDF copies.
+
 ## Write your slides
 
 Set the presentation information in your document's preamble:
@@ -168,8 +171,9 @@ latexmk -lualatex -file-line-error -halt-on-error -interaction=nonstopmode main.
 latexmk -lualatex -file-line-error -halt-on-error -interaction=nonstopmode guide.tex
 ```
 
-The outputs are `main.pdf` and `guide.pdf`. The title and sidebar logos use SVG
-sources. The `svg` package converts them through Inkscape during compilation;
+The outputs are `main.pdf` and `guide.pdf`. Logos, tags, and solid-topo patterns
+use SVG sources. Four textures supplied by WVU as raster artwork remain PNGs.
+The `svg` package converts the SVGs through Inkscape during compilation;
 `latexmkrc` enables the required shell escape automatically. For a local build,
 make sure the `inkscape` command is available on your PATH. Generated files in
 `svg-inkscape/` are a build cache and do not need to be edited or distributed.
@@ -190,6 +194,5 @@ is retained in `guide.tex`.
 WVU's [visual identity](https://scm.wvu.edu/brand/visual-identity/) and
 [Design System cheat sheet](https://designsystem.wvu.edu/utilities/cheat-sheet/)
 provide the brand references. Artwork sources and preparation details are in
-[the asset notes](styles/brand/SOURCES.md) and
-[pattern notes](styles/brand/PATTERN_SOURCES.md). Optional maintainer details
+[the artwork notes](docs/ARTWORK.md). Optional maintainer details
 are in [the brand notes](docs/BRAND_NOTES.md).

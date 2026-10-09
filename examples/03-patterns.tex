@@ -25,7 +25,7 @@
           \ifdefstring{\wvu@pattern}{topo-solid}{\def\wvu@pattern@size{width=.60\paperwidth}}{}%
           \node[anchor=south west,inner sep=0pt,opacity=.14]
             at (-.08\paperwidth,-.12\paperheight)
-            {\expandafter\includegraphics\expandafter[\wvu@pattern@size]{styles/brand/\wvu@pattern@file.pdf}};
+            {\wvu@pattern@image};
         }%
         \fill[wvu-blue,path fading=west] (.24\paperwidth,0)
           rectangle (.42\paperwidth,.5\paperheight+15pt);
