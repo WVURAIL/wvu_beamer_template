@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="53.3 -0.07 77.48 59.09"><defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill: none;
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath-4);
+      }
+
+      .cls-9 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-10 {
+        clip-path: url(#clippath-5);
+      }
+
+      .cls-2 {
+        stroke: #0b74bb;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-4, .cls-5 {
+        stroke-width: 2px;
+      }
+
+      .cls-3, .cls-4 {
+        stroke: #EEAA00;
+      }
+
+      .cls-11 {
+        fill: #EEAA00;
+      }
+
+      .cls-12 {
+        fill: #f7f5f5;
+      }
+
+      .cls-5 {
+        stroke: #002855;
+      }
+
+      .cls-13 {
+        fill: #002855;
+      }
+
+      .cls-14 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" x="53.3" y="-.07" width="77.48" height="59.09" />
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" x="53.3" y="-.07" width="77.48" height="59.09" />
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-1" x="106.19" y="-.07" width="77.89" height="59.09" />
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect class="cls-1" x="106.19" y="-.07" width="77.89" height="59.09" />
+    </clipPath>
+    <clipPath id="clippath-4">
+      <rect class="cls-1" y="-.07" width="77.89" height="59.09" />
+    </clipPath>
+    <clipPath id="clippath-5">
+      <rect class="cls-1" y="-.07" width="77.89" height="59.09" />
+    </clipPath>
+  </defs>
+  <g id="Slash-Tag-124">
+    <g class="cls-14">
+      <polygon class="cls-11" points="93.11 .93 129.12 .93 90.97 58.02 54.97 58.02 93.11 .93" />
+      <g class="cls-6">
+        <polygon class="cls-5" points="54.97 58.02 90.97 58.02 129.12 .93 93.12 .93 54.97 58.02" />
+      </g>
+    </g>
+  </g>
+  </svg>

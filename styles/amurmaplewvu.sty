@@ -3,7 +3,6 @@
 
 % Theme options
 \usetheme[
-  delaunay,           % use decorative pattern on "structure frames"
   rule,               % adds a decorative line between color areas
   sidebar,            % use detailed sidebar
   % nogauge,          % suppresses the progress gauge
@@ -17,6 +16,11 @@
 % TeX Gyre Heros is a Helvetica-compatible font included with TeX Live and Overleaf.
 \RequirePackage{fontspec}
 \setsansfont{TeX Gyre Heros}
+
+% WVU patterns on title, section, and closing slides.
+\RequirePackage{wvubrand-patterns}
+\RequirePackage{wvubrand-elements}
+\wvupattern{topo} % topo, pinstripes, or none
 
 % There are three secondary colors to pick
 % Visit https://scm.wvu.edu/brand/visual-identity/#color to the colors available
