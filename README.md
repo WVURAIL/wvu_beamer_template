@@ -125,16 +125,17 @@ the right.
 
 ## Optional presentation settings
 
-The defaults work without extra configuration. To change the pattern or hide
+The defaults work without extra configuration. To turn off the pattern and hide
 the navigation sidebar, replace the theme line with:
 
 ```latex
-\usetheme[pattern=pinstripes,sidebar=false]{WVU}
+\usetheme[pattern=none,sidebar=false]{WVU}
 ```
 
-The default pattern is **Topo - Solid** (`topo-solid`). Other selectors are
-`pinstripes`, `distressed-lines`, `rolling-hills`, `topo-dashed`,
-`topo-morgantown`, and `none`. The guide shows each pattern.
+The default pattern is **Topo - Solid** (`topo-solid`, also accepted as `topo`).
+Use `none` for a plain panel. The guide shows both options. The artwork folder
+contains `topo-blue.svg`, `topo-gold.svg`, and `topo-white.svg`; the theme uses
+the white variant automatically.
 
 The GWAC SVG is the default title and closing graphic. To adjust its size,
 add this to the preamble:
@@ -148,7 +149,7 @@ add this to the preamble:
 Every setting is optional. Use `logo=path/to/your-logo.svg` for a different SVG
 or `logo=none` to omit the title and closing graphic. Standard
 `\titlegraphic{...}` also works for custom content or other image formats.
-Change the pattern later with `\wvusetup{pattern=rolling-hills}`; a change
+Restore the pattern with `\wvusetup{pattern=topo-solid}`; a change
 inside a TeX group applies only within that group.
 
 The `email`, `website`, and `collaboration` keys in `\wvusetup` remain aliases
@@ -171,8 +172,8 @@ latexmk -lualatex -file-line-error -halt-on-error -interaction=nonstopmode main.
 latexmk -lualatex -file-line-error -halt-on-error -interaction=nonstopmode guide.tex
 ```
 
-The outputs are `main.pdf` and `guide.pdf`. Logos, tags, and solid-topo patterns
-use SVG sources. Four textures supplied by WVU as raster artwork remain PNGs.
+The outputs are `main.pdf` and `guide.pdf`. Logos, tags, and topo patterns
+use SVG sources.
 The `svg` package converts the SVGs through Inkscape during compilation;
 `latexmkrc` enables the required shell escape automatically. For a local build,
 make sure the `inkscape` command is available on your PATH. Generated files in
