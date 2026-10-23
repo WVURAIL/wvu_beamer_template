@@ -197,3 +197,27 @@ WVU's [visual identity](https://scm.wvu.edu/brand/visual-identity/) and
 provide the brand references. Artwork sources and preparation details are in
 [the artwork notes](docs/ARTWORK.md). Optional maintainer details
 are in [the brand notes](docs/BRAND_NOTES.md).
+
+## Colors in scientific figures
+
+`styles/beamercolorthemewvu.sty` is the palette source for the DTV papers,
+PilotProxy, RFIsher, and RadioFisher. Export standalone Python or TeX copies with:
+
+```bash
+python3 tools/export_plot_palette.py --python ../dtv-rs/figsrc/wvu_palette.py
+python3 tools/export_plot_palette.py --tex ../dtv-rs/figsrc/wvu_palette.tex
+```
+
+Add `--check` to verify a copy. Multiple output paths can be supplied in one run.
+The copies need no Beamer installation; the Python helpers load Matplotlib only
+when plotting is requested.
+
+Use WVU blue for measurements and old gold for model curves or small labels.
+Bright gold works best in fills and highlights, where it does not need to carry
+small text against white. The other named WVU colors distinguish additional
+series. Use markers, line patterns, or direct labels as a second cue. The blue
+intensity scale has monotonic lightness; retain grayscale for binary masks and
+use an appropriate diverging or cyclic scale when the quantity requires it.
+Journal requirements and scientific readability take precedence over branding.
+Typography, figure dimensions, normalizations, and scientific inputs are
+independent of the palette.
