@@ -7,6 +7,7 @@ on:
       - '**/*.tex'
       - '**/*.sty'
       - 'styles/**'
+      - 'tools/**'
       - 'latexmkrc'
       - '.github/workflows/checks.yml'
   pull_request:
@@ -14,6 +15,7 @@ on:
       - '**/*.tex'
       - '**/*.sty'
       - 'styles/**'
+      - 'tools/**'
       - 'latexmkrc'
       - '.github/workflows/checks.yml'
   workflow_dispatch:
@@ -33,6 +35,11 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - name: Check the standalone palette exporter
+        run: |
+          python3 tools/export_plot_palette.py --python "$RUNNER_TEMP/wvu_palette.py" --tex "$RUNNER_TEMP/wvu_palette.tex"
+          python3 tools/export_plot_palette.py --check --python "$RUNNER_TEMP/wvu_palette.py" --tex "$RUNNER_TEMP/wvu_palette.tex"
+          python3 -m py_compile "$RUNNER_TEMP/wvu_palette.py"
       - name: Compile the starter and guide with LuaLaTeX
         uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b # v4.1.0
         with:
