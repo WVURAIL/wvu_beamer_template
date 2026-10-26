@@ -19,7 +19,7 @@
     }%
   }%
 }
-% Original Amurmaple layout options retain their native behavior.
+% Amurmaple's own layout options are passed through unchanged.
 \DeclareOptionBeamer{nogauge}{\PassOptionsToPackage{nogauge}{beamerthemeAmurmaple}}
 \DeclareOptionBeamer{nomail}{\PassOptionsToPackage{nomail}{beamerthemeAmurmaple}}
 \DeclareOptionBeamer{sidebarwidth}{\PassOptionsToPackage{sidebarwidth=#1}{beamerthemeAmurmaple}}
@@ -27,7 +27,7 @@
 \DeclareOptionBeamer{leftframetitle}{\PassOptionsToPackage{leftframetitle}{beamerthemeAmurmaple}}
 \ProcessOptionsBeamer
 
-% Retain Amurmaple's layouts underneath the public WVU theme.
+% The WVU theme is built on Amurmaple's layouts.
 \ifwvu@sidebar
   \usetheme[rule,sidebar]{Amurmaple}
 \else
@@ -56,7 +56,8 @@
   {\PackageError{beamerthemeWVU}{Could not configure optional collaboration}{Check the Amurmaple version.}}
 \ExplSyntaxOff
 
-% The background already paints the sidebar. Avoid the outer theme's shading.
+% The sidebar is already painted by the background, so the outer theme's
+% shading is removed.
 \setbeamertemplate{sidebar canvas left}{}
 \setbeamertemplate{sidebar canvas right}{}
 
@@ -65,7 +66,8 @@
   \addtobeamertemplate{sidebar left}{\vskip6pt}{}
 \fi
 
-% The graphic box hugs the artwork; placement belongs to the slide template.
+% The graphic box is sized to the artwork, and its placement is set by the
+% slide template.
 \def\wvu@logofile{styles/gwac.svg}
 \def\wvu@logowidth{6.5cm}
 \newcommand{\wvu@titlelogo}{%
@@ -98,7 +100,8 @@
 \ExplSyntaxOff
 \wvu@centergraphic{thanksframe code}{\amurmaple@finalgraphic}
 
-% Optional settings; title, author, institute, and date use standard Beamer.
+% Optional \wvusetup keys. The title, author, institute, and date use the
+% standard Beamer commands.
 \pgfkeys{
   /wvu/.is family,
   /wvu,
@@ -115,7 +118,7 @@
 \newcommand{\wvusetup}[1]{\pgfkeys{/wvu/.cd,#1}}
 
 % A standalone \maketitle must not leave invisible sidebar links on the title.
-% Existing explicit frame/\titlepage usage retains standard Beamer behavior.
+% An explicit frame with \titlepage behaves as in standard Beamer.
 \renewcommand{\maketitle}{%
   \ifbeamer@inframe
     \titlepage

@@ -6,10 +6,11 @@ The template keeps one working file for each artwork variant:
 - `styles/patterns/`: `topo-blue.svg`, `topo-gold.svg`, and `topo-white.svg`.
 - `styles/gwac.svg` and `styles/wv_logo.svg`: title/closing and sidebar logos.
 
-The `svg` package converts SVGs through Inkscape at compilation time. Its PDF
-cache is ignored by Git; no prepared PDF copies are needed in the source tree.
-The theme uses `topo-white.svg` on its blue panels. The blue and gold variants
-are available for use in custom artwork.
+At compilation time, the SVGs are converted to PDF through Inkscape by the
+`svg` package. Git ignores the PDF cache of this conversion, so no PDF copies
+are kept in the source tree. On its blue panels, the theme uses
+`topo-white.svg`, and the blue and gold variants are available for custom
+artwork.
 
 ## Vector artwork
 
@@ -22,23 +23,25 @@ are available for use in custom artwork.
 | [POIs](https://ccdam.wvu.edu/scm-main/Tags_POIs.svg) | Cropped circular markers with contrasting outlines and transparent centers. |
 | [Corner Slashes](https://ccdam.wvu.edu/scm-main/Tags_CornerSlashes.svg) | Straight-edge vector reconstructions of the published raster sheet. |
 
-Retrieved October 9, 2026. The design-system host returned HTTP 403 for the
-solid-topo source, so it was retrieved from the
+All sources were retrieved on October 9, 2026. For the solid-topo source, the
+design-system host returned HTTP 403, so it was retrieved from the
 [official WVU repository](https://github.com/wvuweb/wvu-ds-v3-hugo/blob/f3c5a0fbea12a34ae0f2da6659c0ecc547f357b0/static/patterns/topo.svg).
 
-Prepared tags use WVU Gold `#EEAA00`, WVU Blue `#002855`, Not Quite White
-`#F7F7F7`, and Safety Blue `#0062A3` for the light treatment's outline. These
-replace the source sheets' export colors while preserving their vector outlines,
-proportions, and curves.
+The prepared tags use WVU Gold `#EEAA00`, WVU Blue `#002855`, Not Quite White
+`#F7F7F7`, and Safety Blue `#0062A3` for the outline of the light treatment.
+These colors replace the export colors of the source sheets, and the vector
+outlines, proportions, and curves are unchanged.
 
-The published Corner Slashes SVG contains an embedded 767-by-230-pixel PNG.
-The prepared corner slashes trace its repeated right triangle with three straight
-edges, preserving its approximately 153:230 aspect ratio and two-pixel outline
-at the source scale. They are traced presentation assets, not original vectors
-supplied by WVU.
+The published Corner Slashes SVG contains an embedded 767-by-230-pixel PNG. Each
+prepared corner slash traces the repeated right triangle of that image with
+three straight edges, which keeps its aspect ratio of about 153:230 and its
+two-pixel outline at the source scale. These shapes are tracings made for the
+template from the WVU raster and are not original WVU vectors.
 
-The QR frame combines a generated QR code with the official slash and template
-colors; it is a presentation component.
+In the QR component of the template, a generated QR code is set in WVU Blue
+in a WVU Blue frame on white, and its caption is marked with the official
+slash.
 
-The separate downloaded source sheets and conversion scripts were removed from
-the working template. Earlier Git revisions retain them for exact regeneration.
+In commit dba6de5, the downloaded source sheets and the conversion scripts were
+removed from `styles/brand/`. For exact regeneration, they are restored from
+its parent with `git checkout dba6de5^ -- styles/brand`.

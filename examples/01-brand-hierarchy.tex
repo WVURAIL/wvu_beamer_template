@@ -1,4 +1,5 @@
-% Start with the visual hierarchy, then show the complete supporting palette.
+% Palette gallery for maintainers: the color hierarchy, then the full palette.
+% guide.tex does not load this file (see docs/BRAND_NOTES.md).
 \newcommand{\wvuguidepalettebar}[2]{%
   \begingroup
   \setlength{\fboxsep}{0pt}%
@@ -17,7 +18,7 @@
   \endgroup
 }
 
-\begin{frame}{A clear color hierarchy}
+\begin{frame}{Color hierarchy}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{.32\textwidth}
       \begin{minipage}[t][1.10cm][t]{\linewidth}
@@ -55,7 +56,7 @@
       \smallskip
       {\bfseries Remaining palette\par}
       \smallskip
-      \small Five additional colors for specialized environments; use sparingly.
+      \small Five more colors, used sparingly for less common environments.
     \end{column}
   \end{columns}
   \vspace{.40cm}
@@ -77,15 +78,15 @@
     \end{column}
     \begin{column}{.29\textwidth}
       \wvuguideswatch{wvu-not-quite-white}{Not Quite White}{Page and box backgrounds}
-      \wvuguideswatch{wvu-coopers-gray}{Coopers Gray}{Quiet details and corollaries}
+      \wvuguideswatch{wvu-coopers-gray}{Coopers Gray}{Minor details and corollaries}
       \wvuguideswatch{wvu-coal}{Coal}{Body text and dark surfaces}
     \end{column}
   \end{columns}
   \vspace{.08cm}
-  {\footnotesize Color selection follows WVU's State Partners toolkit; these uses are template choices.}
+  {\footnotesize The colors follow WVU's State Partners toolkit, and their uses are template choices.}
 \end{frame}
 
-\begin{frame}{Extend the palette with a purpose}
+\begin{frame}{Remaining approved colors}
   \framesubtitle{Use the other five approved colors for specialized material.}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{.29\textwidth}
@@ -105,5 +106,5 @@
     \end{column}
   \end{columns}
   \vspace{.20cm}
-  {\small Choose the environment for its meaning; its assigned color follows automatically.}
+  {\small Choose the environment by its meaning, and its color follows from the theme.}
 \end{frame}

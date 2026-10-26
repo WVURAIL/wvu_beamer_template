@@ -1,5 +1,5 @@
 % Reusable content layouts. Copy the frame you need into your own section.
-\begin{frame}{Compare two ideas clearly}
+\begin{frame}{Compare two ideas}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{.47\textwidth}
       \wvuheading{The question}
@@ -18,7 +18,7 @@
 
       What observation answers that question?
       \begin{itemize}
-        \item Show the most useful comparison.
+        \item Show the plot that answers it.
         \item Name its main limitation.
         \item End with the takeaway.
       \end{itemize}
@@ -26,7 +26,7 @@
   \end{columns}
   \medskip
   \begin{information}[Layout tip]
-    Align columns at the top so the reader can compare them naturally.
+    Top alignment with \texttt{[T]} keeps the two columns easy to compare.
   \end{information}
 \end{frame}
 
@@ -40,22 +40,22 @@
     \item<3-> \textbf{Explain.} Connect the result to its practical meaning.
   \end{enumerate}
   \medskip
-  \uncover<3->{\wvuheading{One reveal should advance one idea.}}
+  \uncover<3->{\wvuheading{Each reveal adds one point.}}
   \note[item]<1>{Introduce the question before describing the method.}
   \note[item]<2>{Explain why this evidence answers the question.}
   \note[item]<3>{Pause on the takeaway before advancing.}
-  % To export presenter notes in your own talk, load pgfpages and enable
+  % Presenter notes are exported by loading pgfpages and setting
   % \setbeameroption{show notes on second screen=right} in the preamble.
 \end{frame}
 
-\begin{frame}[label=technique-navigation]{Keep supporting detail within reach}
-  Keep the main slide focused on its \alert{essential message}.
-  Put longer explanations, settings, and backup material in the appendix.\footnote{Use footnotes for brief context or a source, not another paragraph.}
+\begin{frame}[label=technique-navigation]{Link to backup slides}
+  Keep each main slide to \alert{one message}.
+  Put longer explanations, settings, and backup material in the appendix.\footnote{A footnote holds a short note or a source.}
 
   \medskip
   \begin{beamercolorbox}[sep=.8em,wd=\linewidth]{palette primary}
-    \textbf{During questions:} jump to the supporting detail, then return to
-    the same slide.
+    During questions, jump to the supporting detail and then return to
+    this slide.
   \end{beamercolorbox}
   \medskip
   \hyperlink{reference-start}{\beamerskipbutton{Open the quick reference}}
