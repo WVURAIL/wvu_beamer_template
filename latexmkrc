@@ -1,4 +1,4 @@
 @default_files = ('main.tex');
-$pdf_mode = 4; # LuaLaTeX is required for the theme font.
-$lualatex = 'lualatex -shell-escape %O %S'; # Convert SVG artwork with Inkscape.
-$ENV{'TEXINPUTS'} = './styles//:' . ($ENV{'TEXINPUTS'} // '');
+$pdf_mode = 4; # LuaLaTeX, needed for the theme font
+$lualatex = 'lualatex -shell-escape %O %S'; # shell escape for the Inkscape SVG conversion
+$ENV{'TEXINPUTS'} = './styles//:' . ($ENV{'TEXINPUTS'} // ''); # for the older \usepackage{amurmaplewvu}

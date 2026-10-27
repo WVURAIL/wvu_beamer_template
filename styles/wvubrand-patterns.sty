@@ -8,7 +8,7 @@
 
 \makeatletter
 \def\wvu@pattern{topo-solid}
-% The earlier topo selector remains an alias for Topo - Solid.
+% topo is accepted as an alias for Topo - Solid.
 \csdef{wvu@pattern@file@topo}{topo-white}
 \csdef{wvu@pattern@file@topo-solid}{topo-white}
 \newcommand{\wvupattern}[1]{%
@@ -20,13 +20,13 @@
   }%
 }
 
-% Convert the vector artwork automatically during compilation.
+% The SVG artwork is converted to PDF during compilation.
 \newcommand{\wvu@pattern@image}{%
   \edef\wvu@pattern@options{inkscapelatex=false,inkscapearea=page,\wvu@pattern@size}%
   \expandafter\includesvg\expandafter[\wvu@pattern@options]{styles/patterns/\wvu@pattern@file.svg}%
 }
 
-% Draw within the existing navy panel, before its rule and foreground text.
+% The pattern is drawn in the navy panel, before its rule and foreground text.
 \newcommand{\wvu@pattern@art}[1]{%
   \ifdefstring{\wvu@pattern}{none}{}{%
     \edef\wvu@pattern@file{\csuse{wvu@pattern@file@\wvu@pattern}}%
@@ -63,7 +63,7 @@
   \end{scope}%
 }
 
-% Keep Amurmaple's layouts; replace only its decorative mesh.
+% Amurmaple's decorative mesh is turned off, and its layouts are kept.
 \beamer@am@delaunayfalse
 \newcommand{\wvu@pattern@patcherror}[1]{%
   \PackageError{wvubrand-patterns}{Could not add pattern to #1}%
@@ -81,7 +81,8 @@
 \ExplSyntaxOff
 \wvu@pattern@patch{beamer@@tmpl@section page}{\wvu@pattern@lower}
 \wvu@pattern@patch{beamer@@tmpl@part page}{\wvu@pattern@upper}
-% xparse stores these commands' executable bodies separately.
+% xparse stores the body of \sepframe and \thanksframe in a second macro,
+% '<name> code', so that macro is patched.
 \wvu@pattern@patch{thanksframe code}{\wvu@pattern@lower}
 \makeatother
 \endinput

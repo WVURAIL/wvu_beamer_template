@@ -1,8 +1,8 @@
 # Brand notes for maintainers
 
-Presentation authors do not need to configure colors. Use the environments shown in [the README](../README.md) and `guide.tex`; styling is automatic. These notes record the template's design choices.
+These notes record the template's design choices for maintainers. Presentation authors need no color configuration, since each environment shown in [the README](../README.md) and `guide.tex` takes its color from the theme.
 
-The theme uses the WVU palette already defined in `styles/beamercolorthemewvu.sty`. The default mappings are Woodburn for alerts, Hemlock for information, and Old Gold for examples. Every box family has a distinct accent; pale accents use Coal text, and dark accents use Not Quite White text.
+The theme uses the WVU palette defined in `styles/beamercolorthemewvu.sty`. By default, alerts are Woodburn, information is Hemlock, and examples are Old Gold. Each box family has its own accent. Pale accents take Coal text, and dark accents take Not Quite White text.
 
 | Environment or command | Accent | Hex |
 | --- | --- | --- |
@@ -22,18 +22,18 @@ The theme uses the WVU palette already defined in `styles/beamercolorthemewvu.st
 | `solution` | Not Quite White, with a Coal body | `#F7F7F7` |
 | `proof` | WVU Gold | `#EEAA00` |
 
-The [State Partners toolkit](https://scm.wvu.edu/brand/tools-and-downloads/audience-toolkits/#state-partners) guides which colors to use first, without excluding the rest of WVU's approved palette. The frequent `block`, `alertblock`, `exampleblock`, `information`, and `remark` environments all use colors included in that toolkit. Wild Flour takes priority for remarks; Sunset remains available as the distinct accent for the less common `fact` environment. This frequency-based assignment is a template choice, not an official environment mapping.
+The [State Partners toolkit](https://scm.wvu.edu/brand/tools-and-downloads/audience-toolkits/#state-partners) guides which colors are used first, and the rest of WVU's approved palette stays available. The most frequent environments, `block`, `alertblock`, `exampleblock`, `information`, and `remark`, all take colors from that toolkit. For this reason Wild Flour is given to remarks, and Sunset is kept as the accent of the less common `fact` environment. WVU does not assign colors to Beamer environments, so this assignment by frequency is a template choice.
 
-The 14 secondary and neutral colors cover the 14 box families; proofs use primary WVU Gold. Plural names and Beamer's capitalized or German compatibility names retain the corresponding semantic family's color. An `example` deliberately matches an `exampleblock`.
+Each of the 14 secondary and neutral colors is given to one of the 14 box families, and proofs use the primary WVU Gold. Plural names and Beamer's capitalized or German compatibility names take the color of their family, and `example` takes the color of `exampleblock`.
 
-Normal text is Coal, page backgrounds are Not Quite White, and the main structure remains WVU Blue and Gold. Sidebar text, buttons, lists, notes, bibliography text, and the theme's hard-coded gray details also use named palette colors. Box bodies use Not Quite White except for the inverted `solution` body. The existing inline alert uses Woodburn text on Wild Flour.
+Normal text is Coal, page backgrounds are Not Quite White, and the main structure is WVU Blue and Gold. Sidebar text, buttons, lists, notes, bibliography text, and the gray details hard-coded in Amurmaple also use named palette colors. Except for the inverted `solution` body, box bodies are Not Quite White. For the inline alert, Woodburn text is set on Wild Flour.
 
-Maintainers can find the semantic mappings in `styles/beamercolorthemewvu.sty`. The optional `examples/01-brand-hierarchy.tex` preserves the palette gallery; it is not included in the user guide. The public starter needs no color configuration.
+These mappings are defined in `styles/beamercolorthemewvu.sty`. The palette gallery is kept in the optional `examples/01-brand-hierarchy.tex`, which `guide.tex` does not load.
 
-Imported logo artwork keeps its original colors. QR codes retain pure white for their functional background and quiet zone. Pattern opacity creates tonal variation from the approved base colors. These are separate from the theme's explicit text, box, and interface color choices.
+Imported logo artwork keeps its original colors. QR codes keep pure white for their background and quiet zone, which a scanner needs. The tonal variation of the patterns comes from opacity applied to the approved base colors. These three cases are not covered by the text, box, and interface colors above.
 
-Palette reference: [WVU visual identity](https://scm.wvu.edu/brand/visual-identity/).
+Palette values are taken from the [WVU visual identity](https://scm.wvu.edu/brand/visual-identity/).
 
-Names follow the [WVU Design System cheat sheet](https://designsystem.wvu.edu/utilities/cheat-sheet/): `wvu-blue`, `wvu-gold`, and the `wvu-` prefixed, hyphenated secondary and neutral names (for example, `wvu-wild-flour` and `wvu-not-quite-white`). Earlier compact names remain aliases. Official display labels include Topo - Solid, Topo - Dashed, Topo - Morgantown, Corner Slashes, and POIs. The template's LaTeX commands wrap these assets; they are not WVU website utility classes.
+Color names follow the [WVU Design System cheat sheet](https://designsystem.wvu.edu/utilities/cheat-sheet/), with `wvu-blue`, `wvu-gold`, and hyphenated secondary and neutral names under the `wvu-` prefix (such as `wvu-wild-flour` and `wvu-not-quite-white`). The earlier compact names are kept as aliases. WVU's official display labels for its artwork, such as Topo - Solid, Topo - Dashed, Topo - Morgantown, Corner Slashes, and POIs, are used as written. The template's LaTeX commands draw these assets and are not WVU website utility classes.
 
-RGB values retain the SCM visual identity palette. The Design System pages differ for Gold and Coal, and their printed Seneca Gray value differs from their own CSS; this naming update deliberately keeps the established SCM values. Primary/secondary/tertiary usage priorities in the optional gallery are local presentation choices; WVU's official palette groups are Primary, Secondary, and Neutral.
+The RGB values are those of the SCM visual identity palette. The Design System pages give different values for Gold and Coal, and their printed Seneca Gray differs from their own CSS, so the SCM values are kept. The primary, secondary, and tertiary priorities in the gallery are local presentation choices. WVU's official palette groups are Primary, Secondary, and Neutral.

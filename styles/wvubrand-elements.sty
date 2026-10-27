@@ -24,8 +24,8 @@
   }%
 }
 
-% Every tag family is available in the three published color treatments.
-% Prefer WVU's color tokens; keep the earlier short selectors as aliases.
+% Each tag family comes in the three published color treatments. WVU's color
+% tokens are the main selectors, and the earlier short selectors are aliases.
 \@namedef{wvu@tag@color@wvu-gold}{gold}
 \@namedef{wvu@tag@color@wvu-blue}{blue}
 \@namedef{wvu@tag@color@wvu-not-quite-white}{offwhite}
@@ -34,7 +34,8 @@
 \@namedef{wvu@tag@color@offwhite}{offwhite}
 \@namedef{wvu@tag@color@not-quite-white}{offwhite}
 
-% Family selectors are this package's wrappers, not WVU utility class names.
+% The family selectors are defined by this package and differ from the
+% utility classes of the WVU website.
 % The optional argument accepts graphicx options, such as height or angle.
 \DeclareRobustCommand{\wvutag}[3][height=1em]{%
   \begingroup
@@ -58,7 +59,8 @@
   \endgroup
 }
 
-% These marks inherit the surrounding text size; dimensions are optional.
+% Sizes are given in em, so these marks scale with the surrounding text.
+% \wvuslash and \wvuarrow take an optional size.
 \DeclareRobustCommand{\wvuslash}[1][.85em]{%
   \raisebox{-.10ex}{\wvu@asset{height=#1}{slash-gold}}%
 }
@@ -84,7 +86,8 @@
 \newsavebox{\wvu@qrbox}
 \newlength{\wvu@qrwidth}
 
-% Width includes the QR code's four-module quiet zone; the frame adds 2.75mm.
+% The width covers the four-module quiet zone of the QR code, and the frame
+% adds 2.75mm.
 % The caption sits below the frame and inherits the surrounding text color.
 \DeclareRobustCommand{\wvuqr}[3][2.2cm]{%
   \begingroup
@@ -108,7 +111,8 @@
   \endgroup
 }
 
-% Preserve readable bookmark text for headings, location labels, and QR captions.
+% Headings, location labels, and QR captions keep readable text in the PDF
+% bookmarks.
 \NewExpandableDocumentCommand{\wvu@pdf@qr}{O{2.2cm}mm}{#3}
 \NewExpandableDocumentCommand{\wvu@pdf@tag}{O{height=1em}mm}{}
 \AtBeginDocument{%

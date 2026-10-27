@@ -1,13 +1,13 @@
 % WVU colors for the Amurmaple theme and its environments.
 
-% WVU palette: retain the established SCM web-optimized color values.
+% The WVU palette uses the established SCM web-optimized color values.
 % Values: https://scm.wvu.edu/brand/visual-identity/
 % Names: https://designsystem.wvu.edu/utilities/cheat-sheet/
 
 % Provides a wvu theme for beamer
 \ProvidesPackage{beamercolorthemewvu}
 
-% This command ensures the code is only processed when beamer is loaded
+% the code below is read only in Beamer's presentation mode
 \mode<presentation>
 
 
@@ -15,15 +15,15 @@
 \definecolor{wvu-blue}{RGB}{0,40,85}
 \definecolor{wvu-gold}{RGB}{238,170,0}
 
-% setting the primary colors
+% Amurmaple structure and rule colors
 \colorlet{Amurmaple@structure}{wvu-blue}
 \colorlet{Amurmaple@rule}{wvu-gold}
 
 % logo
 \logo{\;\includesvg[inkscapelatex=false,inkscapearea=page,width=1.8cm]{styles/wv_logo.svg}}
 
-% WVU's secondary palette is split into two categories, "accent" and "neutral"
-% Just establish them here, they are selected later
+% WVU's secondary and neutral colors are defined here and assigned to
+% environments below.
 
 % accent palette
 \definecolor{wvu-star-city-blue}{RGB}{157,218,230}
@@ -60,7 +60,8 @@
 \colorlet{senecagray}{wvu-seneca-gray}
 \colorlet{coal}{wvu-coal}
 
-% Semantic colors: plural names and compatibility aliases share their family.
+% Environment colors. Plural names and compatibility aliases take the color
+% of their family.
 \colorlet{Amurmaple@alert}{wvu-woodburn}
 \colorlet{Amurmaple@info}{wvu-hemlock}
 \colorlet{Amurmaple@example}{wvu-old-gold}
@@ -151,7 +152,8 @@
   \setbeamercolor{block body}{bg=wvu-coal,fg=wvu-not-quite-white}%
 }
 \AtBeginEnvironment{proof}{\wvu@mathcolors{wvu-proof}{wvu-coal}}
-% Beamer's legacy German names are separate environments, not aliases.
+% Beamer defines its German names as environments of their own, so each one
+% needs its own hook.
 \AtBeginEnvironment{Satz}{\wvu@mathcolors{wvu-theorem}{wvu-not-quite-white}}
 \AtBeginEnvironment{Folgerung}{\wvu@mathcolors{wvu-corollary}{wvu-coal}}
 \AtBeginEnvironment{Fakt}{\wvu@mathcolors{wvu-fact}{wvu-coal}}
@@ -207,8 +209,9 @@
     {\footnotesize\insertbuttontext};}
 
 % Amurmaple embeds several literal colors in its drawing templates.
-% Patch only those templates; do not redefine global black/white (QR codes,
-% imported artwork, and user figures may require their original colors).
+% Only those templates are patched. The global black and white are left
+% unchanged, since QR codes, imported artwork, and user figures may need their
+% original colors.
 \RequirePackage{xpatch}
 \newcommand{\wvu@replacecolor}[3]{%
   \expandafter\xpatchcmd\csname#1\endcsname{#2}{#3}%

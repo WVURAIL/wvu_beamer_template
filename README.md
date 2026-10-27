@@ -1,8 +1,10 @@
 # WVU Beamer template
 
-Write a presentation with standard Beamer commands and Amurmaple's additional
-layouts. The WVU theme supplies the colors, Helvetica-compatible font, bullets,
-logos, and background patterns automatically.
+The WVU Beamer template is a theme for West Virginia University presentations,
+built on Maxime Chupin's Amurmaple theme. Slides are written with standard
+Beamer commands and Amurmaple's additional layouts, and the colors,
+Helvetica-compatible font, bullets, logos, and background patterns are applied
+by the theme.
 
 ## Start a presentation
 
@@ -16,7 +18,7 @@ The starter loads the theme with `\usetheme{WVU}`. Keep `beamerthemeWVU.sty`,
 `latexmkrc`, and the complete `styles/` directory beside your presentation file,
 along with any figures you use. A local TeX installation also needs Beamer,
 Amurmaple, the `svg` package, and their dependencies, available through TeX Live
-or MiKTeX. Install Inkscape for automatic SVG conversion.
+or MiKTeX. Inkscape is needed for the automatic SVG conversion.
 
 | File | Use |
 | --- | --- |
@@ -27,8 +29,9 @@ or MiKTeX. Install Inkscape for automatic SVG conversion.
 | `latexmkrc` | Compiler settings and automatic SVG conversion |
 | `beamer-amurmaple-doc.pdf` | The original Amurmaple manual |
 
-Artwork is organized in `styles/patterns/` and `styles/tags/`. The theme handles
-it automatically; you do not need to prepare separate PDF copies.
+The artwork is stored as SVG files in `styles/patterns/` and `styles/tags/`.
+These files are converted to PDF at compile time, so no PDF copies need to be
+prepared.
 
 ## Write your slides
 
@@ -48,67 +51,69 @@ Set the presentation information in your document's preamble:
 \collaboration{Your collaboration}
 ```
 
-The optional short forms fit the sidebar. Use `\maketitle` immediately after
-`\begin{document}` for the title slide. It automatically omits the sidebar
-navigation and slide number.
+The optional short forms in square brackets are used in the sidebar. Put
+`\maketitle` immediately after `\begin{document}` for the title slide, which is
+drawn without the sidebar navigation and slide number.
 
-Amurmaple's contact features are enabled in the starter: `\mail` puts your email
-on the title and along the right side of ordinary slides; `\webpage` adds the
-title-page website; `\collaboration` adds a line beneath the title and subtitle.
-Replace the sample values with your own. An empty value, such as `\mail{}`,
-omits that detail.
+Amurmaple's contact commands are set in the starter. `\mail` prints your email on
+the title slide and along the right edge of ordinary slides. `\webpage` adds a
+website to the title slide, and `\collaboration` adds a line below the title and
+subtitle. Replace the sample values with your own. An empty value, such as
+`\mail{}`, removes that detail.
 
-A `frame` is a slide; `\section` organizes the navigation. Use normal Beamer
-lists and blocks inside each frame:
+Each `frame` is one slide, and each `\section` adds an entry to the sidebar
+navigation. Normal Beamer lists and blocks are used in each frame:
 
 ```latex
 \section{Results}
-\begin{frame}{The key result}
+\begin{frame}{Main result}
   \begin{itemize}
     \item State the finding.
     \item Explain the evidence.
   \end{itemize}
   \begin{block}{Takeaway}
-    Explain why the result matters.
+    State what the audience should remember.
   \end{block}
 \end{frame}
 ```
 
-Use `enumerate` for numbered lists, `columns` for comparisons, and
+Use `enumerate` for numbered lists, `columns` for side-by-side material, and
 `\includegraphics` for figures. `alertblock` and `exampleblock` take a required
 title just like `block`. Standard mathematical environments such as `theorem`,
-`definition`, and `proof` are also styled automatically. Choose each environment
-for what it means in your talk.
+`definition`, and `proof` are also styled by the theme. Each environment has a
+fixed accent color, listed in [the brand notes](docs/BRAND_NOTES.md), so choose
+each environment by its meaning in the talk.
 
 Beamer features such as `\pause`, overlay specifications like `\item<2->`,
 `\note{...}`, `\tableofcontents`, and navigation buttons work normally.
 Code listings or verbatim text require `\begin{frame}[fragile]{Title}`.
-The guide demonstrates these features; the
-[Beamer manual](https://ctan.org/pkg/beamer) covers the full syntax.
+These features are shown in the guide, and the full syntax is given in the
+[Beamer manual](https://ctan.org/pkg/beamer).
 
 ## Use Amurmaple's additions
 
-The WVU theme retains these useful Amurmaple commands and environments:
+The WVU theme keeps the following Amurmaple commands and environments:
 
 | Feature | Usage |
 | --- | --- |
 | Information callout | `\begin{information}[Optional title] ... \end{information}` |
 | Remark | `\begin{remark}[Optional label] ... \end{remark}` |
 | Attributed quotation | `\begin{quotation}[Author] ... \end{quotation}` |
-| Heading within a slide | `\framesection{Heading}` |
+| Heading in a slide | `\framesection{Heading}` |
 | Boxed inline emphasis | `\boxalert{Important text}` |
 | Divider with contents | `\sepframe[title={Results}]` |
 | Closing slide | `\thanksframe{Questions and discussion}` |
 
-Put `\sepframe` and `\thanksframe` between frames; they create their own slides.
-Without a `title` option, `\sepframe` uses the current section name. The closing
-slide reuses the title graphic.
+`\sepframe` and `\thanksframe` create their own slides and are placed between
+frames. Without a `title` option, `\sepframe` uses the current section name. The
+closing slide reuses the title graphic.
 
-See [the bundled Amurmaple manual](beamer-amurmaple-doc.pdf) and
-[Amurmaple on CTAN](https://ctan.org/pkg/beamerthemeamurmaple) for more examples.
-Load `WVU` as your theme; it loads Amurmaple and applies the WVU styling.
+More examples are given in [the bundled Amurmaple manual](beamer-amurmaple-doc.pdf)
+and on [CTAN](https://ctan.org/pkg/beamerthemeamurmaple). The `WVU` theme loads
+Amurmaple itself and then applies the WVU styling, so only `\usetheme{WVU}` is
+needed.
 
-Amurmaple's layout controls also work in the WVU theme options:
+Amurmaple's layout options are also accepted by the WVU theme:
 
 | Option | Effect |
 | --- | --- |
@@ -118,27 +123,26 @@ Amurmaple's layout controls also work in the WVU theme options:
 | `toplogo` | Move the sidebar logo to the top |
 | `leftframetitle` | Align frame titles to the left |
 
-For example, replace the theme line with
-`\usetheme[toplogo,sidebarwidth=64pt]{WVU}`. The default keeps the margin email
-and progress gauge visible, with the logo at the bottom and frame titles on
-the right.
+Options are given in the theme line, for example
+`\usetheme[toplogo,sidebarwidth=64pt]{WVU}`. By default, the margin email and
+progress gauge are shown, the logo is at the bottom, and frame titles are on the
+right.
 
 ## Optional presentation settings
 
-The defaults work without extra configuration. To turn off the pattern and hide
-the navigation sidebar, replace the theme line with:
+The pattern and the navigation sidebar are turned off with this theme line:
 
 ```latex
 \usetheme[pattern=none,sidebar=false]{WVU}
 ```
 
-The default pattern is **Topo - Solid** (`topo-solid`, also accepted as `topo`).
-Use `none` for a plain panel. The guide shows both options. The artwork folder
-contains `topo-blue.svg`, `topo-gold.svg`, and `topo-white.svg`; the theme uses
-the white variant automatically.
+The default pattern is Topo - Solid (`topo-solid`, also accepted as `topo`), and
+`none` gives a plain panel. Both options are shown in the guide. The artwork
+folder holds `topo-blue.svg`, `topo-gold.svg`, and `topo-white.svg`, and the
+theme uses the white variant on its blue panels.
 
-The GWAC SVG is the default title and closing graphic. To adjust its size,
-add this to the preamble:
+The GWAC SVG is the default title and closing graphic. Its size is set in the
+preamble:
 
 ```latex
 \wvusetup{
@@ -146,19 +150,19 @@ add this to the preamble:
 }
 ```
 
-Every setting is optional. Use `logo=path/to/your-logo.svg` for a different SVG
-or `logo=none` to omit the title and closing graphic. Standard
-`\titlegraphic{...}` also works for custom content or other image formats.
-Restore the pattern with `\wvusetup{pattern=topo-solid}`; a change
-inside a TeX group applies only within that group.
+A different SVG is set with `logo=path/to/your-logo.svg`, and `logo=none` removes
+the title and closing graphic. The standard `\titlegraphic{...}` command also
+works for custom content or other image formats. After the pattern is turned
+off, `\wvusetup{pattern=topo-solid}` restores it. A change made in a TeX group
+applies only to that group.
 
-The `email`, `website`, and `collaboration` keys in `\wvusetup` remain aliases
-for Amurmaple's `\mail`, `\webpage`, and `\collaboration` commands.
+The `email`, `website`, and `collaboration` keys in `\wvusetup` are aliases for
+Amurmaple's `\mail`, `\webpage`, and `\collaboration` commands.
 
-WVU extras include `\wvuheading{Heading}`, `\wvuarrow`,
+The theme also adds WVU commands such as `\wvuheading{Heading}`, `\wvuarrow`,
 `\wvulocation{Place}`, `\wvupoi{Point of interest}`, and
-`\wvuqr[2.5cm]{https://example.org}{Paper and slides}`. The guide's WVU extras
-section shows the patterns, tags, and QR examples in context.
+`\wvuqr[2.5cm]{https://example.org}{Paper and slides}`. The WVU extras section
+of the guide shows the patterns, tags, and QR code in context.
 
 ## Build locally or on Overleaf
 
@@ -172,52 +176,61 @@ latexmk -lualatex -file-line-error -halt-on-error -interaction=nonstopmode main.
 latexmk -lualatex -file-line-error -halt-on-error -interaction=nonstopmode guide.tex
 ```
 
-The outputs are `main.pdf` and `guide.pdf`. Logos, tags, and topo patterns
-use SVG sources.
-The `svg` package converts the SVGs through Inkscape during compilation;
-`latexmkrc` enables the required shell escape automatically. For a local build,
-make sure the `inkscape` command is available on your PATH. Generated files in
-`svg-inkscape/` are a build cache and do not need to be edited or distributed.
-The theme finds its support files itself; `latexmkrc` also preserves support
-for the older `\usepackage{amurmaplewvu}` entry point.
+The outputs are `main.pdf` and `guide.pdf`. The logos, tags, and topo patterns
+are SVG files, which are converted to PDF through Inkscape by the `svg` package
+during compilation. The shell escape that this conversion needs is set in
+`latexmkrc`. A local build also needs the `inkscape` command on your PATH.
 
-GitHub Actions builds both documents. After a successful **Build template** run,
-the **wvu-beamer-example** and **wvu-beamer-guide** artifacts contain the PDFs.
-Check the compiled slides for readable text, spacing, and image proportions.
+The converted files in `svg-inkscape/` are a build cache and are not edited or
+distributed. The theme finds its own support files. For the older
+`\usepackage{amurmaplewvu}` entry point, `latexmkrc` also adds `styles/` to the
+TeX search path.
+
+Both documents are built by the **Build template** workflow in GitHub Actions,
+and the PDFs are uploaded as the **wvu-beamer-example** and **wvu-beamer-guide**
+artifacts for 14 days. The compiled slides should still be checked by eye for
+readable text, spacing, and image proportions.
 
 ## Sources
 
 This is a WVU adaptation of Maxime Chupin's
 [Amurmaple theme](https://ctan.org/pkg/beamerthemeamurmaple), with TeX Gyre Heros
-for portable Helvetica-compatible text. The reference example's attribution
-is retained in `guide.tex`.
+for portable Helvetica-compatible text. The attribution of the reference example
+is kept in `guide.tex`.
 
-WVU's [visual identity](https://scm.wvu.edu/brand/visual-identity/) and
-[Design System cheat sheet](https://designsystem.wvu.edu/utilities/cheat-sheet/)
-provide the brand references. Artwork sources and preparation details are in
-[the artwork notes](docs/ARTWORK.md). Optional maintainer details
-are in [the brand notes](docs/BRAND_NOTES.md).
+The brand references are WVU's
+[visual identity](https://scm.wvu.edu/brand/visual-identity/) and
+[Design System cheat sheet](https://designsystem.wvu.edu/utilities/cheat-sheet/).
+The artwork sources and their preparation are described in
+[the artwork notes](docs/ARTWORK.md). The color of each environment and the
+reasons for it are recorded in [the brand notes](docs/BRAND_NOTES.md).
 
 ## Colors in scientific figures
 
 `styles/beamercolorthemewvu.sty` is the palette source for the DTV papers,
-PilotProxy, RFIsher, and RadioFisher. Export standalone Python or TeX copies with:
+PilotProxy, RFIsher, and RadioFisher. Standalone Python or TeX copies are
+exported with:
 
 ```bash
 python3 tools/export_plot_palette.py --python ../dtv-rs/figsrc/wvu_palette.py
 python3 tools/export_plot_palette.py --tex ../dtv-rs/figsrc/wvu_palette.tex
 ```
 
-Add `--check` to verify a copy. Multiple output paths can be supplied in one run.
-The copies need no Beamer installation; the Python helpers load Matplotlib only
-when plotting is requested.
+With `--check`, each copy is compared with a fresh export of the palette
+source and left unchanged. Several `--python` and `--tex` paths can be given in
+one run. The copies need no Beamer installation, and the Python copy imports
+its plotting packages only when `sequential_cmap()` or `plot_rcparams()` is
+called.
 
-Use WVU blue for measurements and old gold for model curves or small labels.
-Bright gold works best in fills and highlights, where it does not need to carry
-small text against white. The other named WVU colors distinguish additional
-series. Use markers, line patterns, or direct labels as a second cue. The blue
-intensity scale has monotonic lightness; retain grayscale for binary masks and
-use an appropriate diverging or cyclic scale when the quantity requires it.
-Journal requirements and scientific readability take precedence over branding.
-Typography, figure dimensions, normalizations, and scientific inputs are
-independent of the palette.
+In the Python copy, measurements are drawn in WVU Blue (`MEASURED`), and model
+curves and small labels in Old Gold (`MODEL`). Bright WVU Gold has too little
+contrast for small text on white, so it is used for fills and highlights.
+Further series take the other named WVU colors in the order of `SERIES`, with
+markers, line styles, or direct labels as a second cue.
+
+The blue intensity scale from `sequential_cmap()` has monotonically decreasing
+lightness and is meant for ordered values. Binary masks stay in grayscale, and a
+diverging or cyclic quantity is given a diverging or cyclic scale. Journal
+requirements and scientific readability take priority over the brand colors.
+Typography, figure dimensions, normalizations, and scientific inputs are set by
+each figure script and are independent of the palette.
